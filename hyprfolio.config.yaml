@@ -294,6 +294,10 @@ skills:
 projects:
   github:
     username: christian-deleon
+    sortBy: stars          # stars | updated | created | name
+    maxRepos: 10           # total repos shown (pinned + rest)
+    topics:                # optional — only show non-pinned repos matching these GitHub topics
+      - devops
   items:
     - name: 'devops-stack'
       description: 'Complete DevOps Stack running on a Kubernetes cluster managed via GitOps.'
