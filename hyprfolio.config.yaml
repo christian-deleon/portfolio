@@ -2,48 +2,51 @@
 # Full reference: docs/CONFIG-REFERENCE.md
 
 site:
-  title: 'Elliot Alderson — Cybersecurity Engineer'
-  description: 'Cybersecurity engineer specializing in penetration testing, network security, and vulnerability assessment. Hello, friend.'
-  url: 'https://example.com'
+  title: 'Christian De Leon — DevOps Engineer'
+  description: 'DevOps Engineer with 18 years of software development experience specializing in cloud computing, Infrastructure as Code, and containerization.'
+  url: 'https://christian.deleon.me'
   language: en
 
 profile:
-  name: 'Elliot Alderson'
-  username: 'elliot'
-  headline: 'Cybersecurity Engineer'
-  summary: 'Cybersecurity engineer with 7+ years of experience in penetration testing, network defense, and vulnerability research. Currently protecting Fortune 500 clients at Allsafe Cybersecurity. I find the vulnerabilities before someone else does.'
+  name: 'Christian De Leon'
+  username: 'cdeleon'
+  headline: 'DevOps Engineer'
+  summary: 'DevOps Engineer with 18 years of software development experience specializing in creating, deploying, and refining cloud infrastructures and applications. Driven by a passion for innovative technologies and continuous enhancement, I leverage expertise in cloud computing, Infrastructure as Code, and containerization to drive operational excellence in fast-paced environments.'
   photo: '/images/profile.jpg'
-  location: 'New York, NY'
-  email: 'elliot@protonmail.ch'
-  website: 'https://example.com'
+  location: 'Orlando, FL'
+  email: 'christian.deleon12@proton.me'
+  website: 'https://christian.deleon.me'
 
 contact:
-  email: 'elliot@protonmail.ch'
-  location: 'New York, NY'
-  availability: 'Selective engagements only'
+  email: 'christian.deleon12@proton.me'
+  phone: '407-705-9985'
+  location: 'Orlando, FL'
+  availability: 'Open to opportunities'
   preferredContact: 'email'
-  message: 'Hello, friend.'
+  message: 'Let''s build something great together.'
 
 social:
   - network: GitHub
-    url: 'https://github.com/mr-robot-00'
-    username: mr-robot-00
+    url: 'https://github.com/christian-deleon'
+    username: christian-deleon
+  - network: LinkedIn
+    url: 'https://linkedin.com/in/christian-de-leon93'
+    username: christian-de-leon93
 
 about:
-  bio: 'Cybersecurity engineer at Allsafe Cybersecurity, where I protect some of the largest corporations in the world from threats they never see coming. I specialize in penetration testing, network defense, and vulnerability research. Most of my work happens in a terminal — I write custom tools, tear apart exploits, and harden infrastructure that other people assume is already secure. I believe security is not a product, it is a process. And I take that process seriously.'
+  bio: 'DevOps Engineer with 18 years of software development experience. I specialize in creating, deploying, and refining cloud infrastructures and applications. From architecting DevSecOps stacks on Kubernetes to deploying observability platforms across shipboard and shoreside environments at Disney, I build the systems that keep things running. My home lab has 9 physical servers, 7 Kubernetes clusters, and up to 400 pods per cluster — because production is just practice that matters.'
   funFacts:
-    - 'Kali Linux is my daily driver — has been for years'
-    - 'I have a mass mail server running in my apartment closet'
-    - 'My fish is named Qwerty and he is a good listener'
-    - 'I use ProtonMail and Signal exclusively — nothing else'
-    - 'I route everything through Tor out of principle'
-    - 'I have never had a social media account'
-    - 'I once wiped a production server by accident on my first week at Allsafe'
+    - 'I run a 42U home lab with 9 physical servers and 7 Kubernetes clusters'
+    - 'Built an entire investment analysis platform as a solo engineer'
+    - 'I started with Mechanical Engineering before switching to Computer Science'
+    - 'I hold 6 professional certifications including AWS DevOps Professional'
+    - 'I have contributed open-source tools for Tailscale DNS and Kubernetes provisioning'
+    - 'I have deployed monitoring stacks on actual cruise ships'
   systemInfo:
-    Location: 'New York, NY'
-    Specialization: 'Penetration Testing'
+    Location: 'Orlando, FL'
+    Specialization: 'DevOps & Cloud Infrastructure'
     Clearance: 'root'
-    Uptime: '7y in cybersec'
+    Uptime: '18y in software engineering'
 
 # ─── Visual Settings ─────────────────────────────────────────────────────────
 
@@ -149,190 +152,204 @@ tiles:
 # ─── Experience ──────────────────────────────────────────────────────────────
 
 experience:
-  - company: 'Allsafe Cybersecurity'
-    position: 'Cybersecurity Engineer'
-    startDate: '2014-03'
-    current: true
-    summary: 'Senior security engineer protecting E Corp and other Fortune 500 clients from cyber threats.'
+  - company: 'The Walt Disney Company'
+    position: 'Senior Systems Engineer / Senior Site Reliability Engineer'
+    startDate: '2024-01'
+    endDate: '2025-01'
+    summary: 'Senior SRE managing cloud infrastructure, Kubernetes environments, and observability platforms across shipboard and shoreside systems.'
     highlights:
-      - 'Detected and mitigated a critical **rootkit** on E Corp servers, preventing a major data breach'
-      - 'Performed **penetration testing** across client networks, identifying 200+ vulnerabilities'
-      - 'Built custom **Python** intrusion detection scripts reducing threat response time by 80%'
-      - 'Managed **firewall** rules and **IDS/IPS** configurations for enterprise-scale infrastructure'
-    location: 'New York, NY'
+      - 'Migrated **AWS AppStream** infrastructure to a new account, automating deployment with **Packer**, **Terraform**, **Ansible**, and **Jenkins**'
+      - 'Modernized infrastructure with **GitOps** using **ArgoCD**, **AWX/Ansible**, **Helm**, and **Terraform**'
+      - 'Deployed the **LGTM stack** (Loki, Grafana, Tempo, Mimir) across shipboard and shoreside **Kubernetes** environments with multistage CI/CD'
+      - 'Collaborated with teams to deploy and stabilize **Kubernetes**-based monitoring dashboards, ensuring high availability'
+      - 'Introduced **Kubernetes** and monitoring best practices to the Systems Engineering team'
+    location: 'Orlando, FL'
 
-  - company: 'Freelance'
-    position: 'Security Consultant'
-    startDate: '2012-01'
-    endDate: '2014-02'
-    summary: 'Independent security researcher and penetration tester.'
+  - company: 'Cole Engineering Services'
+    position: 'Lead DevOps Engineer / Software Design Engineer'
+    startDate: '2022-01'
+    endDate: '2024-01'
+    summary: 'Led DevSecOps architecture and Kubernetes platform engineering for defense programs.'
     highlights:
-      - 'Conducted **vulnerability assessments** for small businesses and startups'
-      - 'Developed custom **exploit** proof-of-concepts for responsible disclosure'
-      - 'Built network monitoring tools in **Python** and **C** for threat detection'
-      - 'Performed **social engineering** audits to evaluate physical and digital security posture'
-    location: 'New York, NY'
+      - 'Architected a **DevSecOps** stack on on-premises **Rancher Kubernetes** with Tekton, Argo CD, Flux, **HashiCorp Vault**, GitLab, AWX, Harbor, and Nexus'
+      - 'Engineered a provisioning toolkit using **Red Hat Satellite**, **Packer**, **Terraform**, and **Ansible** for rapid production-ready deployments'
+      - 'Standardized deployments into highly secure **air-gapped environments** using Docker images and VM templates'
+      - 'Served as primary point of contact for all **vSphere**, **AWS**, **Kubernetes**, and **Microservices** queries'
+      - 'Developed a next-generation control console prototype for **USCYBERCOM**''s PCTE program with **FastAPI** and **React**'
+      - 'Consolidated all DevOps services into a single **Kubernetes** cluster, enabling centralized lifecycle management'
+    location: 'Orlando, FL'
 
-  - company: 'Self-Taught'
-    position: 'Independent Security Researcher'
-    startDate: '2008-01'
-    endDate: '2011-12'
-    summary: 'Years of self-directed study in offensive and defensive security.'
+  - company: 'Financial Investment Group'
+    position: 'Full Stack Engineer'
+    startDate: '2018-01'
+    endDate: '2022-01'
+    summary: 'Sole engineer responsible for designing, building, and deploying an entire investment analysis platform on AWS.'
     highlights:
-      - 'Contributed to open-source **Linux** security tools'
-      - 'Studied **cryptography**, reverse engineering, and exploit development'
-      - 'Built a home lab for practicing **network security** and malware analysis'
-    location: 'Washington Township, NJ'
+      - 'Architected a platform using **AWS serverless** — Fargate, Lambda, and Step Functions — for investment analysis and predictions'
+      - 'Built event-driven **microservices** on **EC2**, **ECS**, **EKS**, and **SQS** processing thousands of messages per second'
+      - 'Developed **machine learning** models with **PyTorch**, **TensorFlow**, and scikit-learn for market trend prediction'
+      - 'Implemented CI/CD with **AWS CodePipeline**, CodeBuild, and CodeDeploy'
+      - 'Provisioned infrastructure using **Terraform**, **Ansible**, **CloudFormation**, and **AWS CDK**'
+      - 'Processed terabytes of stock market data as sole engineer managing the full platform end-to-end'
+    location: 'Miami, FL'
 
 # ─── Education ───────────────────────────────────────────────────────────────
 
 education:
-  - institution: 'Offensive Security'
-    area: 'Penetration Testing with Kali Linux'
-    studyType: 'Professional Training'
-    startDate: '2012'
-    endDate: '2013'
-    courses:
-      - 'Exploit Development'
-      - 'Web Application Attacks'
-      - 'Privilege Escalation'
-      - 'Active Directory Attacks'
-
-  - institution: 'CUNY College of Technology'
+  - institution: 'Florida International University'
     area: 'Computer Science'
-    studyType: 'Coursework (Did Not Complete)'
-    startDate: '2006'
-    endDate: '2008'
+    studyType: 'University'
+    startDate: '2016'
+    endDate: '2019'
     courses:
-      - 'Computer Networks'
-      - 'Operating Systems'
+      - 'Software Engineering'
       - 'Data Structures & Algorithms'
-      - 'Cryptography'
+      - 'Operating Systems'
+      - 'Computer Networks'
 
-  - institution: 'Self-Directed Study'
-    area: 'Security Research & Exploit Development'
-    studyType: 'Ongoing'
-    startDate: '2004'
+  - institution: 'Miami Dade College'
+    area: 'Mechanical Engineering'
+    studyType: 'College'
+    startDate: '2011'
+    endDate: '2016'
     courses:
-      - 'Reverse Engineering'
-      - 'Malware Analysis'
-      - 'Network Protocol Analysis'
-      - 'Wireless Security'
+      - 'Engineering Fundamentals'
+      - 'Applied Mathematics'
+      - 'Physics'
+      - 'Technical Design'
+
+  - institution: 'Christopher Columbus High School'
+    area: 'High School Diploma'
+    studyType: 'High School'
+    startDate: '2007'
+    endDate: '2011'
+    courses: []
 
 # ─── Skills ──────────────────────────────────────────────────────────────────
 
 skills:
-  - category: 'Offensive Security'
+  - category: 'Infrastructure as Code'
     skills:
-      - name: 'Penetration Testing'
+      - name: 'Terraform'
         tier: expert
-      - name: 'Exploit Development'
+      - name: 'Ansible'
         tier: expert
-      - name: 'Social Engineering'
-        tier: expert
-      - name: 'Reverse Engineering'
+      - name: 'Packer'
+        tier: advanced
+      - name: 'AWS CDK'
         tier: advanced
 
-  - category: 'Defensive Security'
+  - category: 'Containers & Orchestration'
     skills:
-      - name: 'Network Security'
+      - name: 'Kubernetes'
         tier: expert
-      - name: 'Digital Forensics'
-        tier: advanced
-      - name: 'Cryptography'
-        tier: advanced
-      - name: 'IDS/IPS'
-        tier: advanced
-
-  - category: 'Systems & Tools'
-    skills:
-      - name: 'Linux'
+      - name: 'Docker'
         tier: expert
-      - name: 'Metasploit'
+      - name: 'Helm'
         tier: expert
-      - name: 'Wireshark'
-        tier: advanced
-      - name: 'Nmap'
+      - name: 'ArgoCD'
         tier: expert
 
-  - category: 'Languages'
+  - category: 'Cloud & CI/CD'
     skills:
+      - name: 'AWS'
+        tier: expert
+      - name: 'GitOps'
+        tier: expert
+      - name: 'Tekton'
+        tier: advanced
+      - name: 'GitLab CI'
+        tier: advanced
+
+  - category: 'Observability & Languages'
+    skills:
+      - name: 'Grafana/LGTM Stack'
+        tier: expert
+      - name: 'Prometheus'
+        tier: expert
       - name: 'Python'
         tier: expert
-      - name: 'C'
+      - name: 'Go'
         tier: advanced
-      - name: 'Bash'
-        tier: expert
-      - name: 'Ruby'
-        tier: proficient
 
 # ─── Projects ────────────────────────────────────────────────────────────────
 
 projects:
-  - name: 'fsociety-tools'
-    description: 'Collection of custom penetration testing and network reconnaissance utilities.'
-    url: 'https://github.com/mr-robot-00/fsociety-tools'
+  - name: 'home-lab'
+    description: '42U home lab with 9 servers, 7 Kubernetes clusters, vSphere, Proxmox, and TrueNAS Scale.'
+    url: 'https://github.com/christian-deleon'
     technologies:
-      - Python
-      - C
-      - Shell
+      - Kubernetes
+      - Proxmox
+      - vSphere
+      - pfSense
     highlights:
-      - 'Custom exploit frameworks'
-      - 'Network enumeration automation'
+      - 'Up to 300-400 pods per cluster'
+      - '7 Proxmox hypervisors + 2 TrueNAS storage nodes'
     featured: true
 
-  - name: 'cryptwall'
-    description: 'File encryption toolkit using AES-256 with secure key management.'
-    url: 'https://github.com/mr-robot-00/cryptwall'
+  - name: 'coredns-tailscale'
+    description: 'Tailscale-integrated CoreDNS plugin that resolves hostnames to Tailscale IPs with subdomain tags and split DNS management.'
+    url: 'https://github.com/christian-deleon/coredns-tailscale'
     technologies:
-      - Python
-      - Cryptography
+      - Go
+      - CoreDNS
+      - Tailscale
     highlights:
-      - 'Military-grade encryption at rest'
-      - 'Zero-knowledge key derivation'
+      - 'Subdomain tag-based resolution'
+      - 'Split DNS management'
     featured: true
 
-  - name: 'dotfiles'
-    description: 'My Kali Linux rice. Paranoid-grade development environment.'
-    url: 'https://github.com/mr-robot-00/dotfiles'
+  - name: 'devops-toolkit'
+    description: 'Toolkit enabling streamlined deployment of essential services on Kubernetes.'
+    url: 'https://github.com/christian-deleon/devops-toolkit'
     technologies:
-      - Shell
-      - Lua
-      - Python
+      - Kubernetes
+      - Helm
+      - Ansible
     highlights:
-      - 'Full disk encryption + ephemeral sessions'
+      - 'One-command service deployment'
+      - 'Open-source community project'
     featured: true
 
-  - name: 'netwatch'
-    description: 'Real-time network traffic monitor and anomaly detector.'
-    url: 'https://github.com/mr-robot-00/netwatch'
+  - name: 'ansible-k8s-collection'
+    description: 'Ansible collection for automated Kubernetes cluster deployment and management using RKE2 or kubeadm.'
+    url: 'https://github.com/christian-deleon/ansible-k8s-collection'
     technologies:
-      - C
-      - Python
-    featured: false
+      - Ansible
+      - Kubernetes
+      - RKE2
+    highlights:
+      - 'Supports RKE2 and kubeadm'
+      - 'Automated cluster provisioning'
+    featured: true
 
 # ─── Certifications ──────────────────────────────────────────────────────────
 
 certifications:
-  - name: 'Offensive Security Certified Professional (OSCP)'
-    issuer: 'Offensive Security'
-    date: '2013-08'
-    id: 'OSCP-2013'
+  - name: 'AWS Certified DevOps Engineer - Professional'
+    issuer: 'Amazon Web Services'
+    id: 'AWS-DOP'
 
-  - name: 'Certified Ethical Hacker (CEH)'
-    issuer: 'EC-Council'
-    date: '2012-04'
-    id: 'CEH-2012'
+  - name: 'AWS Certified Solutions Architect - Associate'
+    issuer: 'Amazon Web Services'
+    id: 'AWS-SAA'
 
-  - name: 'CompTIA Security+'
-    issuer: 'CompTIA'
-    date: '2011-06'
-    id: 'SEC-PLUS-2011'
+  - name: 'AWS Certified SysOps Administrator - Associate'
+    issuer: 'Amazon Web Services'
+    id: 'AWS-SOA'
 
-  - name: 'CompTIA Network+'
-    issuer: 'CompTIA'
-    date: '2010-09'
-    id: 'NET-PLUS-2010'
+  - name: 'AWS Certified Developer - Associate'
+    issuer: 'Amazon Web Services'
+    id: 'AWS-DVA'
+
+  - name: 'Terraform Associate'
+    issuer: 'HashiCorp'
+    id: 'TF-ASSOC'
+
+  - name: 'Certified Kubernetes Application Developer (CKAD)'
+    issuer: 'CNCF'
+    id: 'CKAD'
 
 # ─── SEO ─────────────────────────────────────────────────────────────────────
 
