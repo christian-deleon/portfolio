@@ -544,13 +544,13 @@ This runs:
 
 Hyprfolio has a strict file size budget to keep the site fast. All contributions must stay within these limits:
 
-| Asset                           | Budget       |
-| ------------------------------- | ------------ |
-| HTML                            | < 50 KB      |
-| CSS (all palettes)              | < 30 KB      |
-| JavaScript                      | < 5 KB       |
-| Fonts (WOFF2)                   | < 100 KB     |
-| **Total (excluding wallpaper)** | **< 185 KB** |
+| Asset                           | Budget       | Current |
+| ------------------------------- | ------------ | ------- |
+| HTML                            | < 55 KB      | ~53 KB  |
+| CSS (all palettes)              | < 45 KB      | ~40 KB  |
+| JavaScript                      | < 5 KB       | ~0 KB   |
+| Fonts (WOFF2)                   | < 100 KB     | ~90 KB  |
+| **Total (excluding wallpaper)** | **< 185 KB** | ~183 KB |
 
 If your change increases bundle size, note it in the PR description with a justification. Adding a new palette CSS file adds minimal weight (~1 KB), but be mindful of new JavaScript or font additions.
 

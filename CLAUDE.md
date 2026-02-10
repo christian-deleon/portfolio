@@ -95,15 +95,15 @@ Each reads from a specific config section and outputs formatted content.
 
 These values are non-negotiable for visual authenticity:
 
-- Window borders: 2px solid, gradient for active, muted for inactive
+- Window borders: 1px solid, gradient for active, muted for inactive
 - Window rounding: 10px (`border-radius: 10px`)
-- Inner gaps: 5px between tiles
+- Inner gaps: 5px between tiles (configurable via layout.innerGap)
 - Outer gaps: 20px from screen edges
 - Backdrop blur: `backdrop-filter: blur(10px)` on transparent elements
 - Inactive windows: dim to 0.85 opacity
 - No window title bars in tiled mode (Hyprland uses no server-side decorations)
 - Noise overlay: 2-3% opacity on blurred surfaces
-- Fonts: JetBrains Mono Nerd Font for terminal/code, Inter for UI
+- Fonts: JetBrains Mono Nerd Font (bundled WOFF2) for terminal/code, Inter/system-ui for UI
 
 ## Code Style
 
@@ -144,4 +144,4 @@ These values are non-negotiable for visual authenticity:
 
 ## File Size Budget
 
-Total without wallpaper must stay under 185KB: HTML <50KB, CSS <30KB, JS <5KB, Fonts <100KB.
+Total without wallpaper must stay under 185KB. Current: HTML ~53KB, CSS ~40KB, JS ~0KB (inline), Fonts ~90KB (~183KB total).

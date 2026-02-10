@@ -1,17 +1,28 @@
 # Hyprfolio
 
+<table>
+<tr>
+<td valign="top" width="50%">
+
 **Your portfolio, riced to perfection.**
 
 A config-driven Astro static site that recreates a Linux desktop running the [Hyprland](https://hyprland.org/) compositor. Your resume and portfolio content renders inside tiled windows that mimic real Linux applications -- neofetch for your bio, git log for experience, btop for skills, and more.
 
 One config file. Zero JavaScript frameworks. Looks like a real Hyprland rice.
 
-![Hyprfolio Screenshot](docs/screenshot.png)
-
 [![Astro](https://img.shields.io/badge/Astro-5.2-BC52EE?logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+</td>
+<td width="50%">
+
+<img src="docs/screenshot.gif" alt="Hyprfolio Screenshot" width="100%">
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -23,7 +34,7 @@ One config file. Zero JavaScript frameworks. Looks like a real Hyprland rice.
 - **8 tile content types** -- About, Experience, Education, Skills, Projects, Certifications, Contact, and Custom.
 - **Responsive** -- 12-column CSS Grid that adapts from desktop to mobile with automatic column clamping.
 - **Print resume** -- `Ctrl+P` outputs a clean, professional single-column resume. No wallpaper, no window chrome, just content.
-- **Under 185 KB** -- Total page weight (without wallpaper) stays under 185 KB: HTML <50 KB, CSS <30 KB, JS <5 KB, Fonts <100 KB.
+- **Under 185 KB** -- Total page weight (without wallpaper) stays under 185 KB: HTML ~53 KB, CSS ~40 KB, JS ~0 KB (inline), Fonts ~90 KB.
 - **Zero framework JS** -- No React, Preact, or Svelte. Only two vanilla `<script>` islands (palette switcher and clock).
 - **SEO ready** -- Open Graph, Twitter Cards, JSON-LD Person schema, sitemap, and robots.txt out of the box.
 - **Accessible** -- WCAG AA contrast on all palettes, keyboard navigation, ARIA labels, skip-to-content link, and `prefers-reduced-motion` support.
@@ -47,14 +58,14 @@ Edit `hyprfolio.config.yaml` with your content. The file is heavily commented an
 
 ```yaml
 site:
-  title: 'Jane Doe -- Software Engineer'
-  description: 'Full-stack engineer building great things.'
-  url: 'https://janedoe.dev'
+  title: 'Elliot Alderson — Cybersecurity Engineer'
+  description: 'Cybersecurity engineer specializing in penetration testing and network security.'
+  url: 'https://example.com'
 
 profile:
-  name: 'Jane Doe'
-  headline: 'Software Engineer'
-  summary: 'I build things for the web.'
+  name: 'Elliot Alderson'
+  headline: 'Cybersecurity Engineer'
+  summary: 'I find the vulnerabilities before someone else does.'
   photo: '/images/profile.jpg'
 
 tiles:
@@ -229,7 +240,7 @@ hyprfolio/
 ├── astro.config.mjs               # Astro + Tailwind v4
 ├── justfile                       # Task runner
 ├── public/
-│   ├── fonts/                     # WOFF2 (JetBrains Mono NF, Inter)
+│   ├── fonts/                     # WOFF2 (JetBrains Mono NF)
 │   ├── wallpapers/                # User wallpaper images
 │   ├── images/                    # Profile photo, project screenshots
 │   ├── favicon.svg

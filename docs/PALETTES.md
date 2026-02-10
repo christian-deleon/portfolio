@@ -207,7 +207,7 @@ Every palette defines exactly 23 CSS custom properties with the `--hp-` prefix. 
 .my-component {
   background: var(--hp-surface-0);
   color: var(--hp-text);
-  border: 2px solid var(--hp-accent);
+  border: 1px solid var(--hp-accent);
   box-shadow: 0 4px 12px var(--hp-shadow);
 }
 

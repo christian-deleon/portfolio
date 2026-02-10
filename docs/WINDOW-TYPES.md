@@ -336,7 +336,7 @@ All window types are wrapped in `WindowChrome.astro`, which provides consistent 
 
 | Property         | Value                           | Description                                 |
 | ---------------- | ------------------------------- | ------------------------------------------- |
-| Border width     | 2px                             | Solid border around the window              |
+| Border width     | 1px                             | Solid border around the window              |
 | Border radius    | 10px                            | Rounded corners                             |
 | Active border    | Gradient or `--hp-accent`       | Border color for the focused/hovered window |
 | Inactive border  | `--hp-surface-1` at 50% opacity | Muted border for unfocused windows          |

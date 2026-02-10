@@ -83,8 +83,8 @@ Site-level metadata used in `<head>`, SEO tags, and the sitemap.
 
 ```yaml
 site:
-  title: 'Christian De Leon — DevOps Engineer'
-  description: 'Senior DevOps Engineer specializing in AWS and Kubernetes.'
+  title: 'Elliot Alderson — Cybersecurity Engineer'
+  description: 'Cybersecurity engineer specializing in penetration testing and network security.'
   url: 'https://example.com'
   language: en
 ```
@@ -98,6 +98,7 @@ Primary identity information. Name is required; everything else is optional.
 | Field      | Type           | Required | Default | Description                                          |
 | ---------- | -------------- | -------- | ------- | ---------------------------------------------------- |
 | `name`     | `string`       | **Yes**  | --      | Full name. Must be non-empty.                        |
+| `username` | `string`       | No       | --      | Username (used in waybar title, terminal prompts).   |
 | `headline` | `string`       | No       | `""`    | Professional title or tagline.                       |
 | `summary`  | `string`       | No       | `""`    | Brief professional summary.                          |
 | `photo`    | `string`       | No       | --      | Path to profile photo (e.g., `/images/profile.jpg`). |
@@ -108,12 +109,13 @@ Primary identity information. Name is required; everything else is optional.
 
 ```yaml
 profile:
-  name: 'Christian De Leon'
-  headline: 'Senior DevOps Engineer'
-  summary: 'I design and build cloud infrastructure that scales.'
+  name: 'Elliot Alderson'
+  username: 'elliot'
+  headline: 'Cybersecurity Engineer'
+  summary: 'I find the vulnerabilities before someone else does.'
   photo: '/images/profile.jpg'
-  location: 'San Francisco, CA'
-  email: 'hello@example.com'
+  location: 'New York, NY'
+  email: 'elliot@protonmail.ch'
   website: 'https://example.com'
 ```
 
@@ -200,11 +202,11 @@ Contact details shown in the contact tile (aerc-style email compose).
 
 ```yaml
 contact:
-  email: 'hello@example.com'
-  location: 'San Francisco, CA'
-  availability: 'Open to opportunities'
+  email: 'elliot@protonmail.ch'
+  location: 'New York, NY'
+  availability: 'Selective engagements only'
   preferredContact: 'email'
-  message: "Let's build something reliable together."
+  message: 'Hello, friend.'
 ```
 
 ---
@@ -222,13 +224,8 @@ Array of social media links. Shown in the about tile and used in JSON-LD.
 ```yaml
 social:
   - network: GitHub
-    url: 'https://github.com/christian-deleon'
-    username: christian-deleon
-  - network: LinkedIn
-    url: 'https://linkedin.com/in/christian-deleon'
-  - network: Twitter
-    url: 'https://twitter.com/example'
-    username: example
+    url: 'https://github.com/mr-robot-00'
+    username: mr-robot-00
 ```
 
 ---
@@ -246,17 +243,15 @@ Content for the neofetch-style about tile.
 
 ```yaml
 about:
-  bio: 'Cloud architect by day, homelab enthusiast by night.'
+  bio: 'Cybersecurity engineer at Allsafe Cybersecurity, specializing in penetration testing and vulnerability research.'
   funFacts:
-    - 'I run NixOS on my daily driver (btw)'
-    - 'My homelab has more uptime than most startups'
+    - 'Kali Linux is my daily driver — has been for years'
+    - 'I route everything through Tor out of principle'
   systemInfo:
-    OS: 'NixOS 24.05'
-    WM: 'Hyprland'
-    Shell: 'zsh + starship'
-    Terminal: 'kitty'
-    Editor: 'Neovim (LazyVim)'
-    Uptime: '8y in cloud infra'
+    Location: 'New York, NY'
+    Specialization: 'Penetration Testing'
+    Clearance: 'root'
+    Uptime: '7y in cybersec'
 ```
 
 ---
@@ -317,43 +312,63 @@ wallpaper:
 
 Top status bar configuration. Mimics the Waybar panel from Hyprland.
 
-| Field                 | Type             | Required | Default | Description                              |
-| --------------------- | ---------------- | -------- | ------- | ---------------------------------------- |
-| `show`                | `boolean`        | No       | `true`  | Show or hide the waybar entirely.        |
-| `title`               | `string`         | No       | --      | Text displayed in the center of the bar. |
-| `workspaces`          | `integer` (1-10) | No       | `5`     | Number of workspace dots to show.        |
-| `activeWorkspace`     | `integer` (>= 1) | No       | `1`     | Which workspace dot is highlighted.      |
-| `showClock`           | `boolean`        | No       | `true`  | Show the live clock widget.              |
-| `showPaletteSwitcher` | `boolean`        | No       | `true`  | Show the palette switcher dropdown.      |
-| `trayIcons`           | `string[]`       | No       | `[]`    | Icon names for the system tray area.     |
+| Field                 | Type             | Required | Default | Description                                                         |
+| --------------------- | ---------------- | -------- | ------- | ------------------------------------------------------------------- |
+| `show`                | `boolean`        | No       | `true`  | Show or hide the waybar entirely.                                   |
+| `title`               | `string`         | No       | --      | Text displayed in the center of the bar. Auto-derived from profile. |
+| `workspaces`          | `integer` (1-10) | No       | `5`     | Number of workspace dots to show.                                   |
+| `activeWorkspace`     | `integer` (>= 1) | No       | `1`     | Which workspace dot is highlighted.                                 |
+| `showClock`           | `boolean`        | No       | `true`  | Show the live clock widget.                                         |
+| `showPaletteSwitcher` | `boolean`        | No       | `true`  | Show the palette switcher dropdown.                                 |
+| `trayIcons`           | `string[]`       | No       | `[]`    | Icon names for the system tray area.                                |
+| `height`              | `number`         | No       | `36`    | Waybar height in pixels.                                            |
+| `fontSize`            | `number`         | No       | `13`    | Waybar font size in pixels.                                         |
 
 ```yaml
 waybar:
   show: true
-  title: 'christian@hyprfolio ~'
+  # title auto-derives from profile.name as 'username@hyprfolio ~'
   workspaces: 5
   activeWorkspace: 1
   showClock: true
   showPaletteSwitcher: true
+  height: 36
+  fontSize: 13
 ```
 
 ---
 
 ### layout
 
-Grid layout dimensions.
+Grid layout and window appearance.
 
-| Field      | Type     | Required | Default | Description                                       |
-| ---------- | -------- | -------- | ------- | ------------------------------------------------- |
-| `maxWidth` | `number` | No       | `1400`  | Maximum width of the tile grid in pixels.         |
-| `innerGap` | `number` | No       | `5`     | Gap between tiles in pixels.                      |
-| `outerGap` | `number` | No       | `20`    | Gap between tile grid and screen edges in pixels. |
+| Field              | Type     | Required | Default | Description                                              |
+| ------------------ | -------- | -------- | ------- | -------------------------------------------------------- |
+| `maxWidth`         | `number` | No       | `1400`  | Maximum width of the tile grid in pixels.                |
+| `innerGap`         | `number` | No       | `5`     | Gap between tiles in pixels.                             |
+| `outerGap`         | `number` | No       | `20`    | Gap between tile grid and screen edges in pixels.        |
+| `windowOpacity`    | `number` | No       | `0.85`  | Window background opacity (0 = transparent, 1 = opaque). |
+| `windowBlur`       | `number` | No       | `10`    | Backdrop blur radius in pixels on windows.               |
+| `borderRadius`     | `number` | No       | `10`    | Window corner rounding in pixels.                        |
+| `borderWidth`      | `number` | No       | `1`     | Window border thickness in pixels.                       |
+| `inactiveOpacity`  | `number` | No       | `0.85`  | Dimming factor for inactive windows (0-1).               |
+| `noiseOpacity`     | `number` | No       | `0.03`  | Grain overlay intensity (0 to disable).                  |
+| `terminalFontSize` | `number` | No       | `13`    | Monospace/terminal font size in pixels.                  |
+| `uiFontSize`       | `number` | No       | `14`    | UI/sans-serif font size in pixels.                       |
 
 ```yaml
 layout:
   maxWidth: 1400
   innerGap: 5
   outerGap: 20
+  windowOpacity: 0.85
+  windowBlur: 10
+  borderRadius: 10
+  borderWidth: 1
+  inactiveOpacity: 0.85
+  noiseOpacity: 0.03
+  terminalFontSize: 13
+  uiFontSize: 14
 ```
 
 ---
@@ -412,7 +427,7 @@ Analytics integrations. Only IDs are needed; tracking scripts are injected autom
 | Field             | Type     | Required | Default | Description                                             |
 | ----------------- | -------- | -------- | ------- | ------------------------------------------------------- |
 | `googleId`        | `string` | No       | --      | Google Analytics measurement ID (e.g., `G-XXXXXXXXXX`). |
-| `plausibleDomain` | `string` | No       | --      | Plausible Analytics domain (e.g., `example.com`).      |
+| `plausibleDomain` | `string` | No       | --      | Plausible Analytics domain (e.g., `example.com`).       |
 
 ```yaml
 analytics:
@@ -428,35 +443,29 @@ analytics:
 
 Array of work experience items. Rendered as git-log style commit history in a terminal window.
 
-| Field          | Type                | Required | Default | Description                                      |
-| -------------- | ------------------- | -------- | ------- | ------------------------------------------------ |
-| `company`      | `string`            | **Yes**  | --      | Company or organization name.                    |
-| `position`     | `string`            | **Yes**  | --      | Job title or role.                               |
-| `url`          | `string` (URL)      | No       | --      | Company website.                                 |
-| `startDate`    | `string` (ISO date) | **Yes**  | --      | Start date (`YYYY`, `YYYY-MM`, or `YYYY-MM-DD`). |
-| `endDate`      | `string` (ISO date) | No       | --      | End date. Omit for current positions.            |
-| `current`      | `boolean`           | No       | `false` | Mark as current position.                        |
-| `summary`      | `string`            | No       | `""`    | Brief role description.                          |
-| `highlights`   | `string[]`          | No       | `[]`    | Key achievements or responsibilities.            |
-| `technologies` | `string[]`          | No       | `[]`    | Technologies used in the role.                   |
-| `location`     | `string`            | No       | --      | Work location.                                   |
+| Field        | Type                | Required | Default | Description                                      |
+| ------------ | ------------------- | -------- | ------- | ------------------------------------------------ |
+| `company`    | `string`            | **Yes**  | --      | Company or organization name.                    |
+| `position`   | `string`            | **Yes**  | --      | Job title or role.                               |
+| `url`        | `string` (URL)      | No       | --      | Company website.                                 |
+| `startDate`  | `string` (ISO date) | **Yes**  | --      | Start date (`YYYY`, `YYYY-MM`, or `YYYY-MM-DD`). |
+| `endDate`    | `string` (ISO date) | No       | --      | End date. Omit for current positions.            |
+| `current`    | `boolean`           | No       | `false` | Mark as current position.                        |
+| `summary`    | `string`            | No       | `""`    | Brief role description.                          |
+| `highlights` | `string[]`          | No       | `[]`    | Key achievements or responsibilities.            |
+| `location`   | `string`            | No       | --      | Work location.                                   |
 
 ```yaml
 experience:
-  - company: 'Stratos Systems'
-    position: 'Senior DevOps Engineer'
-    url: 'https://example.com'
-    startDate: '2022-03'
+  - company: 'Allsafe Cybersecurity'
+    position: 'Cybersecurity Engineer'
+    startDate: '2014-03'
     current: true
-    summary: 'Leading cloud infrastructure strategy.'
+    summary: 'Senior security engineer protecting Fortune 500 clients from cyber threats.'
     highlights:
-      - 'Migrated monolith to microservices on EKS'
-      - 'Designed multi-region active-active architecture'
-    technologies:
-      - AWS
-      - Kubernetes
-      - Terraform
-    location: 'San Francisco, CA'
+      - 'Detected and mitigated a critical rootkit on E Corp servers'
+      - 'Performed penetration testing across client networks, identifying 200+ vulnerabilities'
+    location: 'New York, NY'
 ```
 
 ---
@@ -479,17 +488,15 @@ Array of education items. Rendered as man-page style in a terminal window.
 
 ```yaml
 education:
-  - institution: 'University of Washington'
-    area: 'Computer Science'
-    studyType: 'B.S.'
-    startDate: '2013'
-    endDate: '2017'
+  - institution: 'Offensive Security'
+    area: 'Penetration Testing with Kali Linux'
+    studyType: 'Professional Training'
+    startDate: '2012'
+    endDate: '2013'
     courses:
-      - 'Distributed Systems'
-      - 'Cloud Computing'
-    honors:
-      - "Dean's List 2015-2017"
-    url: 'https://www.washington.edu'
+      - 'Exploit Development'
+      - 'Web Application Attacks'
+      - 'Privilege Escalation'
 ```
 
 ---
@@ -507,29 +514,31 @@ Array of skill categories, each containing an array of individual skills. Render
 
 #### Skill Item
 
-| Field   | Type              | Required | Default | Description                                         |
-| ------- | ----------------- | -------- | ------- | --------------------------------------------------- |
-| `name`  | `string`          | **Yes**  | --      | Skill name (e.g., "Kubernetes").                    |
-| `level` | `integer` (0-100) | No       | `80`    | Proficiency level as a percentage.                  |
-| `color` | `string`          | No       | --      | Custom color override (CSS variable name or value). |
+| Field   | Type        | Required | Default      | Description                                                          |
+| ------- | ----------- | -------- | ------------ | -------------------------------------------------------------------- |
+| `name`  | `string`    | **Yes**  | --           | Skill name (e.g., "Kubernetes").                                     |
+| `tier`  | `SkillTier` | No       | `"advanced"` | Proficiency tier: `familiar`, `proficient`, `advanced`, or `expert`. |
+| `color` | `string`    | No       | --           | Custom color override (CSS variable name or value).                  |
 
 ```yaml
 skills:
-  - category: 'Cloud Platforms'
+  - category: 'Offensive Security'
     skills:
-      - name: 'AWS'
-        level: 95
-      - name: 'GCP'
-        level: 80
-      - name: 'Azure'
-        level: 65
+      - name: 'Penetration Testing'
+        tier: expert
+      - name: 'Exploit Development'
+        tier: expert
+      - name: 'Reverse Engineering'
+        tier: advanced
 
-  - category: 'Infrastructure'
+  - category: 'Systems & Tools'
     skills:
-      - name: 'Kubernetes'
-        level: 95
-      - name: 'Terraform'
-        level: 90
+      - name: 'Linux'
+        tier: expert
+      - name: 'Metasploit'
+        tier: expert
+      - name: 'Wireshark'
+        tier: advanced
 ```
 
 ---
@@ -542,8 +551,7 @@ Array of projects. Rendered as Thunar-style file manager with folder grid and si
 | -------------- | ------------------- | -------- | ------- | -------------------------------- |
 | `name`         | `string`            | **Yes**  | --      | Project name.                    |
 | `description`  | `string`            | No       | `""`    | Short project description.       |
-| `url`          | `string` (URL)      | No       | --      | Live project URL.                |
-| `repo`         | `string` (URL)      | No       | --      | Source code repository URL.      |
+| `url`          | `string` (URL)      | No       | --      | Project URL.                     |
 | `image`        | `string`            | No       | --      | Project screenshot or logo path. |
 | `technologies` | `string[]`          | No       | `[]`    | Technologies used.               |
 | `highlights`   | `string[]`          | No       | `[]`    | Key features or achievements.    |
@@ -553,16 +561,16 @@ Array of projects. Rendered as Thunar-style file manager with folder grid and si
 
 ```yaml
 projects:
-  - name: 'cluster-cleanup'
-    description: 'Automatic cleanup of stale Kubernetes resources.'
-    url: 'https://github.com/christian-deleon/cluster-cleanup'
-    repo: 'https://github.com/christian-deleon/cluster-cleanup'
+  - name: 'fsociety-tools'
+    description: 'Collection of custom penetration testing and network reconnaissance utilities.'
+    url: 'https://github.com/mr-robot-00/fsociety-tools'
     technologies:
-      - Go
-      - Kubernetes
-      - Helm
+      - Python
+      - C
+      - Shell
     highlights:
-      - '2.1k stars on GitHub'
+      - 'Custom exploit frameworks'
+      - 'Network enumeration automation'
     featured: true
 ```
 
@@ -583,15 +591,15 @@ Array of professional certifications. Rendered as pass-style tree hierarchy in a
 
 ```yaml
 certifications:
-  - name: 'AWS Solutions Architect — Professional'
-    issuer: 'Amazon Web Services'
-    date: '2023-06'
-    id: 'AWS-SAP-2023'
+  - name: 'Offensive Security Certified Professional (OSCP)'
+    issuer: 'Offensive Security'
+    date: '2013-08'
+    id: 'OSCP-2013'
 
-  - name: 'Certified Kubernetes Administrator (CKA)'
-    issuer: 'Cloud Native Computing Foundation'
-    date: '2022-09'
-    id: 'CKA-2022'
+  - name: 'Certified Ethical Hacker (CEH)'
+    issuer: 'EC-Council'
+    date: '2012-04'
+    id: 'CEH-2012'
 ```
 
 ---
@@ -748,10 +756,10 @@ Array of professional references.
 
 ```yaml
 references:
-  - name: 'Jane Smith'
-    reference: "Christian is one of the best infrastructure engineers I've worked with."
-    position: 'VP Engineering'
-    company: 'Stratos Systems'
+  - name: 'Gideon Goddard'
+    reference: "Elliot is one of the most talented security engineers I've ever worked with."
+    position: 'CEO'
+    company: 'Allsafe Cybersecurity'
 ```
 
 ---
@@ -772,11 +780,10 @@ Array of client or colleague testimonials.
 
 ```yaml
 testimonials:
-  - name: 'Sarah Johnson'
-    role: 'CTO'
-    company: 'TechStartup Inc'
-    quote: 'Christian transformed our entire infrastructure in 3 months.'
-    photo: '/images/sarah.jpg'
+  - name: 'Angela Moss'
+    role: 'Senior Engineer'
+    company: 'Allsafe Cybersecurity'
+    quote: 'Elliot finds vulnerabilities that automated scanners miss entirely.'
 ```
 
 ---
@@ -868,14 +875,12 @@ Array of academic publications or research (for academics and researchers).
 
 ```yaml
 academic:
-  - title: 'Efficient Container Scheduling in Heterogeneous Clusters'
+  - title: 'Detecting Advanced Persistent Threats in Enterprise Networks'
     authors:
-      - 'C. De Leon'
-      - 'B. Kumar'
-    venue: 'IEEE Cloud Computing'
-    year: 2023
-    doi: '10.1109/cloud.2023.00001'
-    abstract: 'We propose a novel scheduling algorithm...'
+      - 'E. Alderson'
+    venue: 'DEF CON'
+    year: 2015
+    abstract: 'A novel approach to identifying long-term intrusion campaigns...'
 ```
 
 ---
@@ -1078,18 +1083,19 @@ Below is a complete config showing every core section with representative values
 # ─── Core (Required) ──────────────────────────────────────────────────────────
 
 site:
-  title: 'Christian De Leon — DevOps Engineer'
-  description: 'Senior DevOps Engineer specializing in AWS and Kubernetes.'
+  title: 'Elliot Alderson — Cybersecurity Engineer'
+  description: 'Cybersecurity engineer specializing in penetration testing and network security.'
   url: 'https://example.com'
   language: en
 
 profile:
-  name: 'Christian De Leon'
-  headline: 'Senior DevOps Engineer'
-  summary: '8+ years building scalable cloud infrastructure.'
+  name: 'Elliot Alderson'
+  username: 'elliot'
+  headline: 'Cybersecurity Engineer'
+  summary: 'I find the vulnerabilities before someone else does.'
   photo: '/images/profile.jpg'
-  location: 'San Francisco, CA'
-  email: 'hello@example.com'
+  location: 'New York, NY'
+  email: 'elliot@protonmail.ch'
   website: 'https://example.com'
 
 tiles:
@@ -1103,7 +1109,7 @@ tiles:
     windowType: system-monitor
     colSpan: 5
     rowSpan: 2
-    title: 'System Monitor'
+    title: 'Skills Monitor'
 
   - content: experience
     windowType: terminal
@@ -1114,69 +1120,73 @@ tiles:
   - content: projects
     windowType: file-manager
     colSpan: 6
-    rowSpan: 2
-    title: 'Projects — Thunar'
+    rowSpan: 1
+    title: 'Projects'
+
+  - content: contact
+    windowType: terminal
+    colSpan: 6
+    rowSpan: 1
+    terminalTitle: 'aerc — kitty'
 
   - content: education
     windowType: terminal
-    colSpan: 4
+    colSpan: 6
     rowSpan: 1
     terminalTitle: 'man education — kitty'
 
   - content: certifications
     windowType: terminal
-    colSpan: 4
+    colSpan: 6
     rowSpan: 1
-    terminalTitle: 'pass — kitty'
-
-  - content: contact
-    windowType: terminal
-    colSpan: 4
-    rowSpan: 1
-    terminalTitle: 'aerc — kitty'
+    terminalTitle: 'certifications — kitty'
 
 # ─── Identity ─────────────────────────────────────────────────────────────────
 
 contact:
-  email: 'hello@example.com'
-  location: 'San Francisco, CA'
-  availability: 'Open to opportunities'
+  email: 'elliot@protonmail.ch'
+  location: 'New York, NY'
+  availability: 'Selective engagements only'
   preferredContact: 'email'
-  message: "Let's build something reliable together."
+  message: 'Hello, friend.'
 
 social:
   - network: GitHub
-    url: 'https://github.com/christian-deleon'
-    username: christian-deleon
-  - network: LinkedIn
-    url: 'https://linkedin.com/in/christian-deleon'
+    url: 'https://github.com/mr-robot-00'
+    username: mr-robot-00
 
 about:
-  bio: 'Cloud architect by day, homelab enthusiast by night.'
+  bio: 'Cybersecurity engineer at Allsafe Cybersecurity, specializing in penetration testing and vulnerability research.'
   funFacts:
-    - 'I run NixOS on my daily driver (btw)'
-    - 'My homelab has more uptime than most startups'
+    - 'Kali Linux is my daily driver — has been for years'
+    - 'I route everything through Tor out of principle'
   systemInfo:
-    OS: 'NixOS 24.05'
-    WM: 'Hyprland'
-    Shell: 'zsh + starship'
-    Terminal: 'kitty'
-    Editor: 'Neovim (LazyVim)'
+    Location: 'New York, NY'
+    Specialization: 'Penetration Testing'
+    Clearance: 'root'
+    Uptime: '7y in cybersec'
 
 # ─── Visual Settings ─────────────────────────────────────────────────────────
 
 palette:
-  default: catppuccin-mocha
+  default: dracula
   defaultLight: catppuccin-latte
+  respectSystem: false
   available:
     - catppuccin-mocha
     - catppuccin-latte
     - tokyo-night
+    - tokyo-night-light
+    - gruvbox-dark
+    - gruvbox-light
+    - nord
+    - nord-light
     - dracula
-  respectSystem: true
+    - rose-pine
+    - rose-pine-dawn
 
 wallpaper:
-  image: '/wallpapers/default.jpg'
+  image: '/wallpapers/wallpaper.jpg'
   opacity: 0.15
   blur: 10
   size: cover
@@ -1184,16 +1194,26 @@ wallpaper:
 
 waybar:
   show: true
-  title: 'christian@hyprfolio ~'
+  # title auto-derives from profile.name as 'username@hyprfolio ~'
   workspaces: 5
   activeWorkspace: 1
   showClock: true
   showPaletteSwitcher: true
+  height: 36
+  fontSize: 13
 
 layout:
   maxWidth: 1400
-  innerGap: 5
+  innerGap: 10
   outerGap: 20
+  windowOpacity: 0.6
+  windowBlur: 10
+  borderRadius: 10
+  borderWidth: 1
+  inactiveOpacity: 0.85
+  noiseOpacity: 0.03
+  terminalFontSize: 13
+  uiFontSize: 14
 
 animations:
   enabled: true
@@ -1205,58 +1225,51 @@ animations:
 # ─── SEO & Analytics ─────────────────────────────────────────────────────────
 
 seo:
-  twitterHandle: '@example'
   noIndex: false
-
-analytics:
-  plausibleDomain: 'example.com'
 
 # ─── Core CV ──────────────────────────────────────────────────────────────────
 
 experience:
-  - company: 'Stratos Systems'
-    position: 'Senior DevOps Engineer'
-    url: 'https://example.com'
-    startDate: '2022-03'
+  - company: 'Allsafe Cybersecurity'
+    position: 'Cybersecurity Engineer'
+    startDate: '2014-03'
     current: true
-    summary: 'Leading cloud infrastructure strategy.'
+    summary: 'Senior security engineer protecting Fortune 500 clients from cyber threats.'
     highlights:
-      - 'Migrated monolith to microservices on EKS'
-      - 'Designed multi-region active-active architecture'
-    technologies: [AWS, Kubernetes, Terraform, ArgoCD]
-    location: 'San Francisco, CA'
+      - 'Detected and mitigated a critical rootkit on E Corp servers'
+      - 'Performed penetration testing across client networks, identifying 200+ vulnerabilities'
+    location: 'New York, NY'
 
 education:
-  - institution: 'University of Washington'
-    area: 'Computer Science'
-    studyType: 'B.S.'
-    startDate: '2013'
-    endDate: '2017'
-    courses: ['Distributed Systems', 'Cloud Computing']
-    honors: ["Dean's List 2015-2017"]
+  - institution: 'Offensive Security'
+    area: 'Penetration Testing with Kali Linux'
+    studyType: 'Professional Training'
+    startDate: '2012'
+    endDate: '2013'
+    courses: ['Exploit Development', 'Web Application Attacks']
 
 skills:
-  - category: 'Cloud Platforms'
+  - category: 'Offensive Security'
     skills:
-      - { name: 'AWS', level: 95 }
-      - { name: 'GCP', level: 80 }
-  - category: 'Infrastructure'
+      - { name: 'Penetration Testing', tier: expert }
+      - { name: 'Exploit Development', tier: expert }
+  - category: 'Systems & Tools'
     skills:
-      - { name: 'Kubernetes', level: 95 }
-      - { name: 'Terraform', level: 90 }
+      - { name: 'Linux', tier: expert }
+      - { name: 'Metasploit', tier: expert }
 
 projects:
-  - name: 'cluster-cleanup'
-    description: 'Automatic cleanup of stale Kubernetes resources.'
-    repo: 'https://github.com/christian-deleon/cluster-cleanup'
-    technologies: [Go, Kubernetes, Helm]
+  - name: 'fsociety-tools'
+    description: 'Collection of custom penetration testing and network reconnaissance utilities.'
+    url: 'https://github.com/mr-robot-00/fsociety-tools'
+    technologies: [Python, C, Shell]
     featured: true
 
 certifications:
-  - name: 'AWS Solutions Architect — Professional'
-    issuer: 'Amazon Web Services'
-    date: '2023-06'
-    id: 'AWS-SAP-2023'
+  - name: 'Offensive Security Certified Professional (OSCP)'
+    issuer: 'Offensive Security'
+    date: '2013-08'
+    id: 'OSCP-2013'
 
 # ─── Extended CV (all optional arrays, shown empty) ──────────────────────────
 

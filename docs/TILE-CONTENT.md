@@ -79,17 +79,15 @@ From `social`:
 
 ```yaml
 about:
-  bio: 'Cloud architect by day, homelab enthusiast by night.'
+  bio: 'Cybersecurity engineer at Allsafe Cybersecurity, specializing in penetration testing and vulnerability research.'
   funFacts:
-    - 'I run NixOS on my daily driver (btw)'
-    - 'My homelab has more uptime than most startups'
+    - 'Kali Linux is my daily driver — has been for years'
+    - 'I route everything through Tor out of principle'
   systemInfo:
-    OS: 'NixOS 24.05'
-    WM: 'Hyprland'
-    Shell: 'zsh + starship'
-    Terminal: 'kitty'
-    Editor: 'Neovim (LazyVim)'
-    Uptime: '8y in cloud infra'
+    Location: 'New York, NY'
+    Specialization: 'Penetration Testing'
+    Clearance: 'root'
+    Uptime: '7y in cybersec'
 
 tiles:
   - content: about
@@ -102,19 +100,18 @@ tiles:
 #### Visual output
 
 ```
-christian@hyprfolio
+elliot@hyprfolio
 ─────────────
-OS:       NixOS 24.05
-WM:       Hyprland
-Shell:    zsh + starship
-Terminal: kitty
-Editor:   Neovim (LazyVim)
-Uptime:   8y in cloud infra
+Location:       New York, NY
+Specialization: Penetration Testing
+Clearance:      root
+Uptime:         7y in cybersec
 
-Cloud architect by day, homelab enthusiast by night.
+Cybersecurity engineer at Allsafe Cybersecurity, specializing
+in penetration testing and vulnerability research.
 
-  * I run NixOS on my daily driver (btw)
-  * My homelab has more uptime than most startups
+  * Kali Linux is my daily driver — has been for years
+  * I route everything through Tor out of principle
 ```
 
 ---
@@ -130,34 +127,31 @@ Renders work experience as git commit history. Each position is a "commit" with 
 
 #### Fields used
 
-| Field          | Type       | Description                                    |
-| -------------- | ---------- | ---------------------------------------------- |
-| `company`      | `string`   | Shown as the commit author.                    |
-| `position`     | `string`   | Shown as the commit subject line.              |
-| `url`          | `string`   | Links the company name.                        |
-| `startDate`    | `string`   | Start date formatted as commit timestamp.      |
-| `endDate`      | `string`   | End date (or "Present" if `current` is true).  |
-| `current`      | `boolean`  | Marks the position as ongoing. Shown as HEAD.  |
-| `summary`      | `string`   | Commit message body.                           |
-| `highlights`   | `string[]` | Displayed as bullet points in the commit body. |
-| `technologies` | `string[]` | Shown as tags or labels after the highlights.  |
-| `location`     | `string`   | Displayed alongside the date.                  |
+| Field        | Type       | Description                                    |
+| ------------ | ---------- | ---------------------------------------------- |
+| `company`    | `string`   | Shown as the commit author.                    |
+| `position`   | `string`   | Shown as the commit subject line.              |
+| `url`        | `string`   | Links the company name.                        |
+| `startDate`  | `string`   | Start date formatted as commit timestamp.      |
+| `endDate`    | `string`   | End date (or "Present" if `current` is true).  |
+| `current`    | `boolean`  | Marks the position as ongoing. Shown as HEAD.  |
+| `summary`    | `string`   | Commit message body.                           |
+| `highlights` | `string[]` | Displayed as bullet points in the commit body. |
+| `location`   | `string`   | Displayed alongside the date.                  |
 
 #### Example config
 
 ```yaml
 experience:
-  - company: 'Stratos Systems'
-    position: 'Senior DevOps Engineer'
-    url: 'https://example.com'
-    startDate: '2022-03'
+  - company: 'Allsafe Cybersecurity'
+    position: 'Cybersecurity Engineer'
+    startDate: '2014-03'
     current: true
-    summary: 'Leading cloud infrastructure strategy.'
+    summary: 'Senior security engineer protecting Fortune 500 clients from cyber threats.'
     highlights:
-      - 'Migrated monolith to microservices on EKS'
-      - 'Designed multi-region active-active architecture'
-    technologies: [AWS, Kubernetes, Terraform]
-    location: 'San Francisco, CA'
+      - 'Detected and mitigated a critical rootkit on E Corp servers'
+      - 'Performed penetration testing across client networks'
+    location: 'New York, NY'
 
 tiles:
   - content: experience
@@ -171,15 +165,13 @@ tiles:
 
 ```
 commit a1b2c3d (HEAD -> main)
-Author: Stratos Systems
-Date:   Mar 2022 — Present
+Author: Allsafe Cybersecurity
+Date:   Mar 2014 — Present
 
-    Senior DevOps Engineer
+    Cybersecurity Engineer
 
-    * Migrated monolith to microservices on EKS
-    * Designed multi-region active-active architecture
-
-    [AWS] [Kubernetes] [Terraform]
+    * Detected and mitigated a critical rootkit on E Corp servers
+    * Performed penetration testing across client networks
 ```
 
 ---
@@ -211,21 +203,20 @@ Renders education as a Unix man page with sections for institution, degree, date
 
 ```yaml
 education:
-  - institution: 'University of Washington'
-    area: 'Computer Science'
-    studyType: 'B.S.'
-    startDate: '2013'
-    endDate: '2017'
+  - institution: 'Offensive Security'
+    area: 'Penetration Testing with Kali Linux'
+    studyType: 'Professional Training'
+    startDate: '2012'
+    endDate: '2013'
     courses:
-      - 'Distributed Systems'
-      - 'Cloud Computing'
-    honors:
-      - "Dean's List 2015-2017"
+      - 'Exploit Development'
+      - 'Web Application Attacks'
+      - 'Privilege Escalation'
 
 tiles:
   - content: education
     windowType: terminal
-    colSpan: 4
+    colSpan: 6
     rowSpan: 1
     terminalTitle: 'man education — kitty'
 ```
@@ -233,19 +224,11 @@ tiles:
 #### Visual output
 
 ```
-EDUCATION(7)                  Manual Page                  EDUCATION(7)
+Offensive Security
+Professional Training — Penetration Testing with Kali Linux
+2012 — 2013
 
-NAME
-       B.S. Computer Science — University of Washington
-
-DATES
-       2013 — 2017
-
-COURSES
-       Distributed Systems, Cloud Computing
-
-HONORS
-       Dean's List 2015-2017
+Exploit Development, Web Application Attacks, Privilege Escalation
 ```
 
 ---
@@ -270,51 +253,51 @@ From `SkillCategory`:
 
 From `SkillItem`:
 
-| Field   | Type              | Description                          |
-| ------- | ----------------- | ------------------------------------ |
-| `name`  | `string`          | Skill label shown beside the bar.    |
-| `level` | `integer` (0-100) | Bar fill percentage. Default: 80.    |
-| `color` | `string`          | Optional color override for the bar. |
+| Field   | Type        | Description                                                          |
+| ------- | ----------- | -------------------------------------------------------------------- |
+| `name`  | `string`    | Skill label shown beside the bar.                                    |
+| `tier`  | `SkillTier` | Proficiency tier: `familiar`, `proficient`, `advanced`, or `expert`. |
+| `color` | `string`    | Optional color override for the bar.                                 |
 
 #### Example config
 
 ```yaml
 skills:
-  - category: 'Cloud Platforms'
+  - category: 'Offensive Security'
     skills:
-      - name: 'AWS'
-        level: 95
-      - name: 'GCP'
-        level: 80
-      - name: 'Azure'
-        level: 65
+      - name: 'Penetration Testing'
+        tier: expert
+      - name: 'Exploit Development'
+        tier: expert
+      - name: 'Reverse Engineering'
+        tier: advanced
 
-  - category: 'Infrastructure'
+  - category: 'Systems & Tools'
     skills:
-      - name: 'Kubernetes'
-        level: 95
-      - name: 'Terraform'
-        level: 90
+      - name: 'Linux'
+        tier: expert
+      - name: 'Metasploit'
+        tier: expert
 
 tiles:
   - content: skills
     windowType: system-monitor
     colSpan: 5
     rowSpan: 2
-    title: 'System Monitor'
+    title: 'Skills Monitor'
 ```
 
 #### Visual output
 
 ```
-Cloud Platforms
-  AWS         [████████████████████░░] 95%
-  GCP         [████████████████░░░░░░] 80%
-  Azure       [█████████████░░░░░░░░░] 65%
+Offensive Security
+  Penetration Testing  [████████████████████] expert
+  Exploit Development  [████████████████████] expert
+  Reverse Engineering  [████████████████░░░░] advanced
 
-Infrastructure
-  Kubernetes  [████████████████████░░] 95%
-  Terraform   [██████████████████░░░░] 90%
+Systems & Tools
+  Linux                [████████████████████] expert
+  Metasploit           [████████████████████] expert
 ```
 
 ---
@@ -334,8 +317,7 @@ Renders projects as a file manager with folder icons, project names, and metadat
 | -------------- | ---------- | --------------------------------------------------- |
 | `name`         | `string`   | Project name, shown as folder/file name.            |
 | `description`  | `string`   | Short description shown on hover or in detail view. |
-| `url`          | `string`   | Links to the live project.                          |
-| `repo`         | `string`   | Links to the source repository.                     |
+| `url`          | `string`   | Links to the project.                               |
 | `image`        | `string`   | Project thumbnail or icon.                          |
 | `technologies` | `string[]` | Shown as tags or file type indicators.              |
 | `highlights`   | `string[]` | Key features shown in detail view.                  |
@@ -347,28 +329,27 @@ Renders projects as a file manager with folder icons, project names, and metadat
 
 ```yaml
 projects:
-  - name: 'cluster-cleanup'
-    description: 'Automatic cleanup of stale Kubernetes resources.'
-    url: 'https://github.com/christian-deleon/cluster-cleanup'
-    repo: 'https://github.com/christian-deleon/cluster-cleanup'
-    technologies: [Go, Kubernetes, Helm]
+  - name: 'fsociety-tools'
+    description: 'Collection of custom penetration testing and network reconnaissance utilities.'
+    url: 'https://github.com/mr-robot-00/fsociety-tools'
+    technologies: [Python, C, Shell]
     highlights:
-      - '2.1k stars on GitHub'
-      - 'Used by 50+ companies in production'
+      - 'Custom exploit frameworks'
+      - 'Network enumeration automation'
     featured: true
 
   - name: 'dotfiles'
-    description: 'My NixOS + Hyprland rice.'
-    repo: 'https://github.com/christian-deleon/dotfiles'
-    technologies: [Nix, Lua, Shell]
+    description: 'My Kali Linux rice. Paranoid-grade development environment.'
+    url: 'https://github.com/mr-robot-00/dotfiles'
+    technologies: [Shell, Lua, Python]
     featured: true
 
 tiles:
   - content: projects
     windowType: file-manager
     colSpan: 6
-    rowSpan: 2
-    title: 'Projects — Thunar'
+    rowSpan: 1
+    title: 'Projects'
 ```
 
 #### Visual output
@@ -376,10 +357,10 @@ tiles:
 ```
  Bookmarks        | Name            Size     Type
  ─────────        | ──────────────  ───────  ──────
-  Home            |  cluster-cleanup Go     ★ Featured
-  Projects        |  tf-modules    Terraform ★ Featured
-  Downloads       |  dotfiles      Nix
-                  |  deploy-bot    Go
+  Home            |  fsociety-tools Python  ★ Featured
+  Projects        |  cryptwall     Python   ★ Featured
+  Downloads       |  dotfiles      Shell
+                  |  netwatch      C
 ```
 
 ---
@@ -408,40 +389,40 @@ Renders certifications as a tree hierarchy, similar to the `pass` password store
 
 ```yaml
 certifications:
-  - name: 'AWS Solutions Architect — Professional'
-    issuer: 'Amazon Web Services'
-    date: '2023-06'
-    id: 'AWS-SAP-2023'
+  - name: 'Offensive Security Certified Professional (OSCP)'
+    issuer: 'Offensive Security'
+    date: '2013-08'
+    id: 'OSCP-2013'
 
-  - name: 'Certified Kubernetes Administrator (CKA)'
-    issuer: 'Cloud Native Computing Foundation'
-    date: '2022-09'
-    id: 'CKA-2022'
+  - name: 'Certified Ethical Hacker (CEH)'
+    issuer: 'EC-Council'
+    date: '2012-04'
+    id: 'CEH-2012'
 
-  - name: 'HashiCorp Certified: Terraform Associate'
-    issuer: 'HashiCorp'
-    date: '2021-11'
-    id: 'HC-TA-2021'
+  - name: 'CompTIA Security+'
+    issuer: 'CompTIA'
+    date: '2011-06'
+    id: 'SEC-PLUS-2011'
 
 tiles:
   - content: certifications
     windowType: terminal
-    colSpan: 4
+    colSpan: 6
     rowSpan: 1
-    terminalTitle: 'pass — kitty'
+    terminalTitle: 'certifications — kitty'
 ```
 
 #### Visual output
 
 ```
 Certifications
-├── Amazon Web Services
-│   ├── AWS Solutions Architect — Professional (2023)
-│   └── AWS Solutions Architect — Associate (2020)
-├── Cloud Native Computing Foundation
-│   └── Certified Kubernetes Administrator (2022)
-└── HashiCorp
-    └── Terraform Associate (2021)
+├── Offensive Security
+│   └── OSCP (2013)
+├── EC-Council
+│   └── Certified Ethical Hacker (2012)
+└── CompTIA
+    ├── Security+ (2011)
+    └── Network+ (2010)
 ```
 
 ---
@@ -480,23 +461,21 @@ From `social`:
 
 ```yaml
 contact:
-  email: 'hello@example.com'
-  location: 'San Francisco, CA'
-  availability: 'Open to opportunities'
+  email: 'elliot@protonmail.ch'
+  location: 'New York, NY'
+  availability: 'Selective engagements only'
   preferredContact: 'email'
-  message: "Let's build something reliable together."
+  message: 'Hello, friend.'
 
 social:
   - network: GitHub
-    url: 'https://github.com/christian-deleon'
-    username: christian-deleon
-  - network: LinkedIn
-    url: 'https://linkedin.com/in/christian-deleon'
+    url: 'https://github.com/mr-robot-00'
+    username: mr-robot-00
 
 tiles:
   - content: contact
     windowType: terminal
-    colSpan: 4
+    colSpan: 6
     rowSpan: 1
     terminalTitle: 'aerc — kitty'
 ```
@@ -504,18 +483,17 @@ tiles:
 #### Visual output
 
 ```
-To:      hello@example.com
+To:      elliot@protonmail.ch
 Subject: Let's connect
 
-Let's build something reliable together.
+Hello, friend.
 
 ── Contact ──────────────────
-  Location:   San Francisco, CA
-  Status:     Open to opportunities
+  Location:   New York, NY
+  Status:     Selective engagements only
 
 ── Social ───────────────────
-  GitHub:     christian-deleon
-  LinkedIn:   linkedin.com/in/christian-deleon
+  GitHub:     mr-robot-00
 ```
 
 ---

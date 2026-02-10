@@ -38,7 +38,7 @@ hyprfolio/
 ├── astro.config.mjs               # Astro + Tailwind v4
 ├── justfile                       # Task runner
 ├── public/
-│   ├── fonts/                     # WOFF2 (JetBrains Mono NF, Inter)
+│   ├── fonts/                     # WOFF2 (JetBrains Mono NF)
 │   ├── wallpapers/                # User wallpaper images
 │   ├── images/                    # Profile photo, project screenshots
 │   ├── favicon.svg
@@ -55,6 +55,7 @@ hyprfolio/
 │   │   ├── TileGrid.astro         # CSS Grid container
 │   │   ├── Tile.astro             # Grid item wrapper
 │   │   ├── WindowChrome.astro     # Universal window border + title bar
+│   │   ├── TileContent.astro     # Dynamic tile content resolver
 │   │   ├── PaletteSwitcher.astro  # Island: palette dropdown + JS
 │   │   ├── Clock.astro            # Island: live clock
 │   │   └── PrintHeader.astro      # Hidden on screen, visible in print
@@ -201,7 +202,7 @@ Tiles define `colSpan` (1-12) and `rowSpan`. Spans clamp to available columns at
 
 | Property        | Value                           |
 | --------------- | ------------------------------- |
-| Window border   | 2px solid                       |
+| Window border   | 1px solid                       |
 | Corner radius   | 10px                            |
 | Inner gap       | 5px                             |
 | Outer gap       | 20px                            |
@@ -275,22 +276,22 @@ Config is a superset of JSON Resume v1.0.0. Schema.org Person JSON-LD auto-gener
 
 ## Typography
 
-| Context                | Font                     | Size |
-| ---------------------- | ------------------------ | ---- |
-| Terminal, Waybar, code | JetBrains Mono Nerd Font | 13px |
-| UI text (GTK windows)  | Inter                    | 14px |
+| Context                | Font                     | Size | Delivery        |
+| ---------------------- | ------------------------ | ---- | --------------- |
+| Terminal, Waybar, code | JetBrains Mono Nerd Font | 13px | Bundled WOFF2   |
+| UI text (GTK windows)  | Inter / system-ui        | 14px | System fallback |
 
 Linux-like rendering: `-webkit-font-smoothing: antialiased; font-synthesis: none;`
 
 ## File Size Budget
 
-| Asset                    | Target       |
-| ------------------------ | ------------ |
-| HTML                     | < 50 KB      |
-| CSS (all palettes)       | < 30 KB      |
-| JavaScript               | < 5 KB       |
-| Fonts (WOFF2)            | < 100 KB     |
-| **Total (no wallpaper)** | **< 185 KB** |
+| Asset                    | Actual  |
+| ------------------------ | ------- |
+| HTML                     | ~53 KB  |
+| CSS (all palettes)       | ~40 KB  |
+| JavaScript               | ~0 KB   |
+| Fonts (WOFF2)            | ~90 KB  |
+| **Total (no wallpaper)** | ~183 KB |
 
 ## Deployment
 
