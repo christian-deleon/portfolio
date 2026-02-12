@@ -85,3 +85,23 @@ clean:
 new-palette name:
     cp src/palettes/_template.css src/palettes/{{name}}.css
     @echo "Created src/palettes/{{name}}.css — fill in the --hp-* values"
+
+# ─── Upstream ──────────────────────────────────────────────────────────────
+
+# Add the original repository as an upstream remote
+upstream-add:
+    git remote add upstream https://github.com/christian-deleon/hyprfolio.git
+
+# Fetch latest changes from upstream
+upstream-fetch:
+    git fetch upstream
+
+# Show diff against upstream main branch
+upstream-diff:
+    just upstream-fetch
+    git diff upstream/main
+
+# Rebase current branch onto upstream main
+upstream-rebase:
+    just upstream-fetch
+    git rebase upstream/main
