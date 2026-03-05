@@ -3,7 +3,7 @@
 
 site:
   title: 'Christian De Leon — DevOps Engineer'
-  description: 'DevOps Engineer with 18 years of software development experience specializing in cloud computing, Infrastructure as Code, and containerization.'
+  description: 'DevOps Engineer with over 15 years of experience in software development specializing in cloud infrastructure, Kubernetes, and CI/CD at scale.'
   url: 'https://christian.deleon.me'
   language: en
 
@@ -11,42 +11,33 @@ profile:
   name: 'Christian De Leon'
   username: 'cdeleon'
   headline: 'DevOps Engineer'
-  summary: 'DevOps Engineer with 18 years of software development experience specializing in creating, deploying, and refining cloud infrastructures and applications. Driven by a passion for innovative technologies and continuous enhancement, I leverage expertise in cloud computing, Infrastructure as Code, and containerization to drive operational excellence in fast-paced environments.'
   photo: '/images/profile.jpg'
-  location: 'Orlando, FL'
-  email: 'christian.deleon12@proton.me'
-  website: 'https://christian.deleon.me'
-
-contact:
-  email: 'christian.deleon12@proton.me'
+  location: 'Saint Cloud, FL'
   phone: '407-705-9985'
-  location: 'Orlando, FL'
-  availability: 'Open to opportunities'
-  preferredContact: 'email'
-  message: 'Let''s build something great together.'
+  email: 'christian@deleon.me'
 
-social:
-  - network: GitHub
+links:
+  - name: GitHub
     url: 'https://github.com/christian-deleon'
-    username: christian-deleon
-  - network: LinkedIn
+    text: christian-deleon
+  - name: LinkedIn
     url: 'https://linkedin.com/in/christian-de-leon93'
-    username: christian-de-leon93
+    text: christian-de-leon93
 
 about:
-  bio: 'DevOps Engineer with 18 years of software development experience. I specialize in creating, deploying, and refining cloud infrastructures and applications. From architecting DevSecOps stacks on Kubernetes to deploying observability platforms across shipboard and shoreside environments at Disney, I build the systems that keep things running. My home lab has 9 physical servers, 7 Kubernetes clusters, and up to 400 pods per cluster — because production is just practice that matters.'
+  bio: DevOps Engineer with over 15 years of experience in software development, infrastructure automation, and IT operations, including 7+ years focused on cloud infrastructure, Kubernetes, and CI/CD at scale. Background spans building platforms end-to-end as a sole engineer, leading DevOps teams in air-gapped defense environments with an active DoD Secret clearance, and running SRE for 28 Kubernetes clusters across cruise ship and shoreside systems at Disney. — I build the systems that keep things running.'
   funFacts:
-    - 'I run a 42U home lab with 9 physical servers and 7 Kubernetes clusters'
-    - 'Built an entire investment analysis platform as a solo engineer'
-    - 'I started with Mechanical Engineering before switching to Computer Science'
+    - 'I run a 42U home lab with 9 servers, 7 Kubernetes clusters, Proxmox, and TrueNAS'
+    - 'Built an entire investment analysis platform as a sole engineer'
+    - 'I studied Mechanical Engineering before pivoting to software and DevOps'
     - 'I hold 6 professional certifications including AWS DevOps Professional'
-    - 'I have contributed open-source tools for Tailscale DNS and Kubernetes provisioning'
+    - 'I build open-source DevOps tools — DNS servers, K8s operators, and infrastructure automation'
     - 'I have deployed monitoring stacks on actual cruise ships'
   systemInfo:
-    Location: 'Orlando, FL'
+    Location: 'Saint Cloud, FL'
     Specialization: 'DevOps & Cloud Infrastructure'
-    Clearance: 'root'
-    Uptime: '18y in software engineering'
+    Clearance: 'Active DoD Security Clearance'
+    Uptime: '15y in software engineering'
 
 # ─── Visual Settings ─────────────────────────────────────────────────────────
 
@@ -147,70 +138,79 @@ tiles:
 
 experience:
   - company: 'The Walt Disney Company'
-    position: 'Senior Systems Engineer / Senior Site Reliability Engineer'
-    startDate: '2024-01'
-    endDate: '2025-01'
-    summary: 'Senior SRE managing cloud infrastructure, Kubernetes environments, and observability platforms across shipboard and shoreside systems.'
+    position: 'Senior Systems Engineer (Promoted from Senior SRE)'
+    startDate: '2025-04'
+    endDate: '2025-12'
+    summary: 'Promoted from SRE to Systems Engineering, leading infrastructure modernization with GitOps and IaC.'
     highlights:
-      - 'Migrated **AWS AppStream** infrastructure to a new account, automating deployment with **Packer**, **Terraform**, **Ansible**, and **Jenkins**'
-      - 'Modernized infrastructure with **GitOps** using **ArgoCD**, **AWX/Ansible**, **Helm**, and **Terraform**'
-      - 'Deployed the **LGTM stack** (Loki, Grafana, Tempo, Mimir) across shipboard and shoreside **Kubernetes** environments with multistage CI/CD'
-      - 'Collaborated with teams to deploy and stabilize **Kubernetes**-based monitoring dashboards, ensuring high availability'
-      - 'Introduced **Kubernetes** and monitoring best practices to the Systems Engineering team'
+      - 'Led migration of **AWS AppStream** infrastructure to a PCI compliant account, refactoring outdated PowerShell and Ruby scripts and automating manual pipeline steps with **Jenkins** and **Packer**'
+      - 'Drove adoption of **GitOps** via **ArgoCD** and Infrastructure as Code with **Terraform** across the Systems Engineering team, replacing ad-hoc deployment processes'
+      - 'Mentored colleagues on **Kubernetes** monitoring and automation, establishing proactive upgrade and patching practices across the team'
     location: 'Orlando, FL'
 
-  - company: 'Cole Engineering Services'
-    position: 'Lead DevOps Engineer / Software Design Engineer'
-    startDate: '2022-01'
-    endDate: '2024-01'
-    summary: 'Led DevSecOps architecture and Kubernetes platform engineering for defense programs.'
+  - company: 'The Walt Disney Company'
+    position: 'Senior Site Reliability Engineer'
+    startDate: '2024-06'
+    endDate: '2025-03'
+    summary: 'Managed observability platforms and Kubernetes infrastructure across 28 clusters spanning cruise ship and shoreside environments.'
     highlights:
-      - 'Architected a **DevSecOps** stack on on-premises **Rancher Kubernetes** with Tekton, Argo CD, Flux, **HashiCorp Vault**, GitLab, AWX, Harbor, and Nexus'
-      - 'Engineered a provisioning toolkit using **Red Hat Satellite**, **Packer**, **Terraform**, and **Ansible** for rapid production-ready deployments'
-      - 'Standardized deployments into highly secure **air-gapped environments** using Docker images and VM templates'
-      - 'Served as primary point of contact for all **vSphere**, **AWS**, **Kubernetes**, and **Microservices** queries'
-      - 'Developed a next-generation control console prototype for **USCYBERCOM**''s PCTE program with **FastAPI** and **React**'
-      - 'Consolidated all DevOps services into a single **Kubernetes** cluster, enabling centralized lifecycle management'
+      - 'Engineered high-availability **LGTM stack** (Loki, Grafana, Tempo, Mimir) across 28 **Kubernetes** clusters spanning cruise ship and shoreside environments using **Helm** charts and **ArgoCD** for GitOps, replacing redundant per-cluster configurations with a single standardized deployment'
+      - 'Implemented **Grafana Operator** to standardize dashboards, alerts, and datasources across application teams, ensuring consistent observability across environments with intermittent connectivity'
+      - 'Optimized LGTM configurations for cruise ship environments with limited connectivity, developing custom **Grafana** and **Mimir** alerts for early issue detection before on-shore teams could respond'
+      - 'Led incident response for **Kubernetes** infrastructure, replacing manual remediation processes with **Rundeck** and **ArgoCD** automation to eliminate human error during outages'
+      - 'Collaborated with application teams to embed **Grafana Operator** resources into their **Helm** charts, so monitoring, dashboards, and alerts deployed automatically alongside their applications'
+      - 'Built multistage **CI/CD** pipeline for the LGTM stack, automating deployment, upgrading, and patching across development, staging, and production environments with integrated testing and approval gates for hands-off promotion to production'
+    location: 'Orlando, FL'
+
+  - company: 'Cole Engineering Services, Inc. (CESI), a By Light Company'
+    position: 'Lead DevOps Engineer'
+    startDate: '2023-06'
+    endDate: '2024-05'
+    summary: "Led DevSecOps architecture and Kubernetes platform engineering for USCYBERCOM's PCTE defense program."
+    highlights:
+      - "Architected remote desktop platform using **Kasm Workspaces** on **Kubernetes** and Docker with fine-grained access controls and persistent **vSphere** storage for USCYBERCOM's PCTE cyber training program"
+      - 'Developed **DevSecOps** platform on **vSphere** with **RKE2**, integrating **Flux CD** for GitOps, **Tekton** for CI/CD, **Harbor** for container registry, **Vault** for secrets, and **Nexus** for artifact management'
+      - 'Built virtual desktop toolkit with **Packer**, **Ansible**, and **Terraform** for air-gapped environments, packaging complex automations into single-command executions that third-party engineers could run without deep infrastructure knowledge'
+      - 'Deployed **LGTM stack** with custom **Grafana** dashboards, **Prometheus** alerts, and **Loki** logging for full observability across PCTE training environments'
+      - 'Served as the go-to expert for **vSphere**, **AWS**, **Kubernetes**, and distributed systems, mentoring engineers across teams'
+      - 'Participated in recruiting, interviewing, and assessing candidates for DevOps and Software Engineering roles, contributing to strategic hiring decisions and team growth'
+    location: 'Orlando, FL'
+
+  - company: 'Cole Engineering Services, Inc. (CESI), a By Light Company'
+    position: 'Software Design Engineer'
+    startDate: '2022-11'
+    endDate: '2023-06'
+    summary: "Designed next-generation tools for USCYBERCOM's PCTE cyber training program."
+    highlights:
+      - "Designed next-generation platform for **USCYBERCOM**'s PCTE program, architecting tools to visualize, plan, and budget cyber training environments"
+      - 'Developed MVP front-end with **React** and **Node.js** where users could specify, visualize, and deploy training environments with minimal clicks'
+      - 'Built MVP back-end services with **PostgreSQL** and **Keycloak** authentication on **vSphere** and **Kubernetes**, handling scheduling and automation of persistent training environments'
     location: 'Orlando, FL'
 
   - company: 'Financial Investment Group'
     position: 'Full Stack Engineer'
-    startDate: '2018-01'
-    endDate: '2022-01'
+    startDate: '2018-06'
+    endDate: '2022-11'
     summary: 'Sole engineer responsible for designing, building, and deploying an entire investment analysis platform on AWS.'
     highlights:
-      - 'Architected a platform using **AWS serverless** — Fargate, Lambda, and Step Functions — for investment analysis and predictions'
-      - 'Built event-driven **microservices** on **EC2**, **ECS**, **EKS**, and **SQS** processing thousands of messages per second'
-      - 'Developed **machine learning** models with **PyTorch**, **TensorFlow**, and scikit-learn for market trend prediction'
-      - 'Implemented CI/CD with **AWS CodePipeline**, CodeBuild, and CodeDeploy'
-      - 'Provisioned infrastructure using **Terraform**, **Ansible**, **CloudFormation**, and **AWS CDK**'
-      - 'Processed terabytes of stock market data as sole engineer managing the full platform end-to-end'
-    location: 'Miami, FL'
+      - 'Architected investment analysis platform using **AWS ECS**, **EKS**, and **SQS** for event-driven microservices, processing thousands of messages per second with Python and **Redis** to enable real-time predictions and automated decision-making'
+      - 'Implemented serverless architecture with **AWS Lambda**, **Fargate**, and **Step Functions** via **CloudFormation** and **CDK** to run high-volume simulations cost-effectively under tight budget constraints'
+      - 'Developed **machine learning** models with **TensorFlow**, **PyTorch**, and **Scikit-learn** in Python for market trend prediction using automated classification and reinforcement learning'
+      - 'Built on-premises **Kubernetes** cluster using **kubeadm** on **vSphere** with self-managed services like **RabbitMQ**, **PostgreSQL**, and **Vault**, provisioned via **Terraform** and **Ansible**, to handle large workloads cost-effectively without cloud dependencies'
+      - 'Created front-end dashboard with **React.js** and **TypeScript** for data visualization and platform control, interfacing with back-end APIs to monitor investments in real time'
+      - 'Established **CI/CD** pipelines using **AWS CodePipeline**, **CodeBuild**, and **CodeDeploy**, automating deployments to minimize errors and accelerate development'
+      - 'Sole engineer on the platform end-to-end, architecting and building the entire infrastructure, back-end services, ML models, and front-end under limited budget and resources'
+    location: 'Remote'
 
 # ─── Education ───────────────────────────────────────────────────────────────
 
 education:
   - institution: 'Florida International University'
-    area: 'Computer Science'
+    area: 'Coursework in Software Engineering'
     studyType: 'University'
     startDate: '2016'
     endDate: '2019'
-    courses:
-      - 'Software Engineering'
-      - 'Data Structures & Algorithms'
-      - 'Operating Systems'
-      - 'Computer Networks'
-
-  - institution: 'Miami Dade College'
-    area: 'Mechanical Engineering'
-    studyType: 'College'
-    startDate: '2011'
-    endDate: '2016'
-    courses:
-      - 'Engineering Fundamentals'
-      - 'Applied Mathematics'
-      - 'Physics'
-      - 'Technical Design'
+    courses: []
 
   - institution: 'Christopher Columbus High School'
     area: 'High School Diploma'
@@ -230,7 +230,7 @@ skills:
         tier: expert
       - name: 'Packer'
         tier: advanced
-      - name: 'AWS CDK'
+      - name: 'CloudFormation'
         tier: advanced
 
   - category: 'Containers & Orchestration'
@@ -243,85 +243,114 @@ skills:
         tier: expert
       - name: 'ArgoCD'
         tier: expert
-      - name: 'Wireshark'
-        tier: advanced
 
-  - category: 'Cloud & CI/CD'
+  - category: 'Cloud & Platforms'
     skills:
       - name: 'AWS'
         tier: expert
-      - name: 'GitOps'
-        tier: expert
-      - name: 'Tekton'
+      - name: 'vSphere'
         tier: advanced
-      - name: 'GitLab CI'
+      - name: 'Proxmox'
         tier: advanced
 
-  - category: 'Observability & Languages'
+  - category: 'CI/CD & GitOps'
+    skills:
+      - name: 'Tekton'
+        tier: expert
+      - name: 'GitLab CI'
+        tier: expert
+      - name: 'Jenkins'
+        tier: advanced
+      - name: 'GitHub Actions'
+        tier: expert
+
+  - category: 'Observability'
     skills:
       - name: 'Grafana/LGTM Stack'
         tier: expert
       - name: 'Prometheus'
         tier: expert
-      - name: 'Python'
-        tier: expert
-      - name: 'Go'
+      - name: 'Rundeck'
         tier: advanced
 
+  - category: 'Programming'
+    skills:
+      - name: 'Python'
+        tier: expert
+      - name: 'Bash'
+        tier: expert
+      - name: 'Go'
+        tier: proficient
+      - name: 'Rust'
+        tier: familiar
+      - name: 'Java'
+        tier: familiar
+
 # ─── Projects ────────────────────────────────────────────────────────────────
-# Set projects.github.username to fetch pinned repos from GitHub automatically.
+# Fetches pinned repos from GitHub automatically.
 # Requires the GITHUB_TOKEN environment variable (PAT with public_repo + read:user).
-# Manual items below are used as a fallback if GitHub is disabled or unavailable.
+# Manual items below are used as a fallback if GitHub is unavailable.
 
 projects:
-  - name: 'home-lab'
-    description: '42U home lab with 9 servers, 7 Kubernetes clusters, vSphere, Proxmox, and TrueNAS Scale.'
-    url: 'https://github.com/christian-deleon'
-    technologies:
-      - Kubernetes
-      - Proxmox
-      - vSphere
-      - pfSense
-    highlights:
-      - 'Up to 300-400 pods per cluster'
-      - '7 Proxmox hypervisors + 2 TrueNAS storage nodes'
-    featured: true
+  github:
+    username: christian-deleon
+  items:
+    - name: 'devops-stack'
+      description: 'Complete DevOps Stack running on a Kubernetes cluster managed via GitOps.'
+      url: 'https://github.com/christian-deleon/devops-stack'
+      technologies:
+        - Kubernetes
+        - Helm
+        - Terraform
+        - ArgoCD
+      featured: true
 
-  - name: 'coredns-tailscale'
-    description: 'Tailscale-integrated CoreDNS plugin that resolves hostnames to Tailscale IPs with subdomain tags and split DNS management.'
-    url: 'https://github.com/christian-deleon/coredns-tailscale'
-    technologies:
-      - Go
-      - CoreDNS
-      - Tailscale
-    highlights:
-      - 'Subdomain tag-based resolution'
-      - 'Split DNS management'
-    featured: true
+    - name: 'netbird-coredns'
+      description: 'Highly available, NetBird peer-integrated DNS server with HTTP API for custom record management and Terraform support.'
+      url: 'https://github.com/christian-deleon/netbird-coredns'
+      technologies:
+        - Go
+        - CoreDNS
+        - NetBird
+        - Kubernetes
+      featured: true
 
-  - name: 'devops-toolkit'
-    description: 'Toolkit enabling streamlined deployment of essential services on Kubernetes.'
-    url: 'https://github.com/christian-deleon/devops-toolkit'
-    technologies:
-      - Kubernetes
-      - Helm
-      - Ansible
-    highlights:
-      - 'One-command service deployment'
-      - 'Open-source community project'
-    featured: true
+    - name: 'ansible-collection-kubernetes'
+      description: 'Ansible collection for automated Kubernetes cluster deployment and management using RKE2 or kubeadm.'
+      url: 'https://github.com/christian-deleon/ansible-collection-kubernetes'
+      technologies:
+        - Ansible
+        - Kubernetes
+        - RKE2
+      featured: true
 
-  - name: 'ansible-k8s-collection'
-    description: 'Ansible collection for automated Kubernetes cluster deployment and management using RKE2 or kubeadm.'
-    url: 'https://github.com/christian-deleon/ansible-k8s-collection'
-    technologies:
-      - Ansible
-      - Kubernetes
-      - RKE2
-    highlights:
-      - 'Supports RKE2 and kubeadm'
-      - 'Automated cluster provisioning'
-    featured: true
+    - name: 'aws-ecr-secret-updater'
+      description: 'Helm chart that automates AWS ECR image pull secret rotation across multiple Kubernetes namespaces.'
+      url: 'https://github.com/christian-deleon/aws-ecr-secret-updater'
+      technologies:
+        - Kubernetes
+        - Helm
+        - AWS ECR
+        - GitHub Actions
+      featured: true
+
+    - name: 'hyprfolio'
+      description: 'Hyprland-inspired personal website template with responsive tiling layouts and switchable color palettes.'
+      url: 'https://github.com/christian-deleon/hyprfolio'
+      technologies:
+        - Astro
+        - TypeScript
+        - Tailwind CSS
+      featured: true
+
+    - name: 'PySequence'
+      description: 'Unofficial Python SDK and REST API server for the Sequence personal finance platform with GraphQL SDK, FastAPI server, and AI-powered Telegram bot.'
+      url: 'https://github.com/christian-deleon/PySequence'
+      technologies:
+        - Python
+        - FastAPI
+        - GraphQL
+      featured: true
 
 # ─── Certifications ──────────────────────────────────────────────────────────
 
