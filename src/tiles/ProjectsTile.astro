@@ -29,40 +29,34 @@ if (github) {
       <div class="project-grid">
         {projects.map((project: ProjectItem) => (
           <div class="project-card">
-            <div class="flex items-start gap-2">
+            <div class="project-title-row">
               <span class="folder-icon">
                 {project.featured ? '\u2605' : '\uD83D\uDCC1'}
               </span>
-              <div class="flex-1 min-w-0">
-                <div class="project-title-row">
-                  {project.url ? (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="project-name project-name-link"
-                    >
-                      {project.name}
-                    </a>
-                  ) : (
-                    <span class="project-name">{project.name}</span>
-                  )}
-                  {project.featured && (
-                    <span class="featured-badge">featured</span>
-                  )}
-                </div>
-                {project.description && (
-                  <p class="project-desc">{project.description}</p>
-                )}
-                {project.technologies.length > 0 && (
-                  <div class="flex flex-wrap gap-1 mt-2">
-                    {project.technologies.map((tech: string) => (
-                      <span class="tech-pill">{tech}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
+              {project.url ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-name project-name-link"
+                >
+                  {project.name}
+                </a>
+              ) : (
+                <span class="project-name">{project.name}</span>
+              )}
+              {project.featured && <span class="featured-badge">featured</span>}
             </div>
+            {project.description && (
+              <p class="project-desc">{project.description}</p>
+            )}
+            {project.technologies.length > 0 && (
+              <div class="flex flex-wrap gap-1 mt-2">
+                {project.technologies.map((tech: string) => (
+                  <span class="tech-pill">{tech}</span>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -117,7 +111,7 @@ if (github) {
   }
 
   .folder-icon {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1;
     flex-shrink: 0;
   }
