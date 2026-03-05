@@ -1,12 +1,13 @@
 ---
 interface Props {
-  promptPrefix?: string;
+  title?: string | undefined;
 }
 
-Astro.props;
+const { title } = Astro.props;
 ---
 
 <div class="terminal terminal-text">
+  {title && <div class="terminal__title-bar">{title}</div>}
   <div class="terminal__content">
     <slot />
   </div>
@@ -14,15 +15,28 @@ Astro.props;
 
 <style>
   .terminal {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
     background: transparent;
     color: var(--hp-text);
+  }
+
+  .terminal__title-bar {
+    padding: 4px 12px;
+    font-size: 12px;
+    color: var(--hp-subtext-0);
+    text-align: center;
+    border-bottom: 1px solid var(--hp-surface-0);
+    flex-shrink: 0;
+  }
+
+  .terminal__content {
     padding: 12px 16px;
     flex: 1;
     overflow: auto;
     min-height: 0;
-  }
-
-  .terminal__content {
     word-break: break-word;
   }
 </style>

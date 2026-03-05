@@ -42,7 +42,7 @@ const staggerDelay = index * animations.stagger;
   <WindowChrome active={true}>
     {
       tile.windowType === 'terminal' && (
-        <Terminal>
+        <Terminal title={tile.terminalTitle}>
           <TileContent content={tile.content} />
         </Terminal>
       )
