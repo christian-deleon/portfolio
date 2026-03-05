@@ -4,9 +4,8 @@
   /* Hide desktop chrome */
   .waybar,
   .wallpaper-bg,
-  .window-chrome-border,
+  .window-chrome,
   .palette-switcher,
-  .tile-grid-outer,
   .desktop-container {
     all: unset !important;
   }
@@ -54,7 +53,7 @@
     transition: none !important;
   }
 
-  .tile-item {
+  .tile {
     break-inside: avoid;
     page-break-inside: avoid;
     margin-bottom: 12pt;
