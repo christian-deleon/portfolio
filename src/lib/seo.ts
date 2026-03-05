@@ -58,7 +58,7 @@ export function buildMetaTags(config: HyprfolioConfig): MetaTag[] {
 export function buildPersonJsonLd(
   config: HyprfolioConfig,
 ): Record<string, unknown> {
-  const { profile, social, contact } = config;
+  const { profile, about, social } = config;
 
   const jsonLd: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -67,9 +67,9 @@ export function buildPersonJsonLd(
   };
 
   if (profile.headline) jsonLd.jobTitle = profile.headline;
-  if (profile.summary) jsonLd.description = profile.summary;
+  if (about.bio) jsonLd.description = about.bio;
   if (profile.photo) jsonLd.image = profile.photo;
-  if (profile.website) jsonLd.url = profile.website;
+  if (config.site.url) jsonLd.url = config.site.url;
   if (profile.location) {
     jsonLd.address = {
       '@type': 'PostalAddress',
@@ -77,13 +77,8 @@ export function buildPersonJsonLd(
     };
   }
 
-  if (contact.email || profile.email) {
-    jsonLd.email = contact.email || profile.email;
-  }
-
-  if (contact.phone || profile.phone) {
-    jsonLd.telephone = contact.phone || profile.phone;
-  }
+  if (profile.email) jsonLd.email = profile.email;
+  if (profile.phone) jsonLd.telephone = profile.phone;
 
   if (social.length > 0) {
     jsonLd.sameAs = social.map((s) => s.url);

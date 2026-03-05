@@ -9,7 +9,6 @@ import type {
   AnalyticsSchema,
   ProfileSchema,
   SocialLinkSchema,
-  ContactSchema,
   AboutSchema,
   PaletteSchema,
   WallpaperSchema,
@@ -61,7 +60,6 @@ export type SEO = z.infer<typeof SEOSchema>;
 export type Analytics = z.infer<typeof AnalyticsSchema>;
 export type Profile = z.infer<typeof ProfileSchema>;
 export type SocialLink = z.infer<typeof SocialLinkSchema>;
-export type Contact = z.infer<typeof ContactSchema>;
 export type About = z.infer<typeof AboutSchema>;
 export type Palette = z.infer<typeof PaletteSchema>;
 export type Wallpaper = z.infer<typeof WallpaperSchema>;

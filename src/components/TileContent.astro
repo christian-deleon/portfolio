@@ -5,7 +5,6 @@ import EducationTile from '@/tiles/EducationTile.astro';
 import SkillsTile from '@/tiles/SkillsTile.astro';
 import ProjectsTile from '@/tiles/ProjectsTile.astro';
 import CertificationsTile from '@/tiles/CertificationsTile.astro';
-import ContactTile from '@/tiles/ContactTile.astro';
 import CustomTile from '@/tiles/CustomTile.astro';
 import type { TileContent as TileContentType } from '@/types/config';
 
@@ -22,5 +21,4 @@ const { content } = Astro.props;
 {content === 'skills' && <SkillsTile />}
 {content === 'projects' && <ProjectsTile />}
 {content === 'certifications' && <CertificationsTile />}
-{content === 'contact' && <ContactTile />}
 {content === 'custom' && <CustomTile />}

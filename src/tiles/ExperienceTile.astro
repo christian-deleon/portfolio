@@ -7,7 +7,7 @@ interface Props {}
 const config = loadConfig();
 const experience = config.experience;
 const profileName = config.profile.name;
-const profileEmail = config.profile.email || config.contact.email || '';
+const profileEmail = config.profile.email || '';
 
 function generateHash(company: string, position: string): string {
   let hash = 0;
@@ -134,10 +134,6 @@ experience.forEach((item: ExperienceItem, index: number) => {
   .line-content {
     flex: 1;
     min-width: 0;
-  }
-
-  .empty {
-    color: var(--hp-subtext-0);
   }
 
   .line-content :global(.commit-label) {

@@ -11,18 +11,9 @@ profile:
   name: 'Elliot Alderson'
   username: 'elliot'
   headline: 'Cybersecurity Engineer'
-  summary: 'Cybersecurity engineer with 7+ years of experience in penetration testing, network defense, and vulnerability research. Currently protecting Fortune 500 clients at Allsafe Cybersecurity. I find the vulnerabilities before someone else does.'
   photo: '/images/profile.jpg'
   location: 'New York, NY'
   email: 'elliot@protonmail.ch'
-  website: 'https://example.com'
-
-contact:
-  email: 'elliot@protonmail.ch'
-  location: 'New York, NY'
-  availability: 'Selective engagements only'
-  preferredContact: 'email'
-  message: 'Hello, friend.'
 
 social:
   - network: GitHub
@@ -128,23 +119,17 @@ tiles:
     rowSpan: 1
     title: 'Projects'
 
-  - content: contact
+  - content: certifications
     windowType: terminal
     colSpan: 6
     rowSpan: 1
-    terminalTitle: 'aerc — kitty'
+    terminalTitle: 'certifications — kitty'
 
   - content: education
     windowType: terminal
     colSpan: 6
     rowSpan: 1
     terminalTitle: 'man education — kitty'
-
-  - content: certifications
-    windowType: terminal
-    colSpan: 6
-    rowSpan: 1
-    terminalTitle: 'certifications — kitty'
 
 # ─── Experience ──────────────────────────────────────────────────────────────
 
@@ -250,19 +235,19 @@ skills:
         tier: expert
       - name: 'Metasploit'
         tier: expert
-      - name: 'Wireshark'
-        tier: advanced
       - name: 'Nmap'
         tier: expert
+      - name: 'Wireshark'
+        tier: advanced
 
   - category: 'Languages'
     skills:
       - name: 'Python'
         tier: expert
-      - name: 'C'
-        tier: advanced
       - name: 'Bash'
         tier: expert
+      - name: 'C'
+        tier: advanced
       - name: 'Ruby'
         tier: proficient
 

@@ -21,7 +21,6 @@ export const TileContentEnum = z.enum([
   'skills',
   'projects',
   'certifications',
-  'contact',
   'custom',
 ]);
 
@@ -78,27 +77,16 @@ export const ProfileSchema = z.object({
   name: z.string().min(1, 'Profile name is required'),
   username: optionalString,
   headline: z.string().default(''),
-  summary: z.string().default(''),
   photo: optionalString,
   location: optionalString,
   phone: optionalString,
   email: optionalString,
-  website: optionalUrl,
 });
 
 export const SocialLinkSchema = z.object({
   network: z.string(),
   url: urlString,
   username: optionalString,
-});
-
-export const ContactSchema = z.object({
-  email: optionalString,
-  phone: optionalString,
-  location: optionalString,
-  availability: optionalString,
-  preferredContact: optionalString,
-  message: optionalString,
 });
 
 export const AboutSchema = z.object({
@@ -479,7 +467,7 @@ export const HyprfolioConfigSchema = z.object({
   tiles: z.array(TileDefinitionSchema).min(1, 'At least one tile is required'),
 
   // Identity
-  contact: ContactSchema.default({}),
+
   social: z.array(SocialLinkSchema).default([]),
   about: AboutSchema.default({}),
 

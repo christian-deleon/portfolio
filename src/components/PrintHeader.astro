@@ -6,11 +6,7 @@ interface Props {
 }
 
 const { config } = Astro.props;
-const { profile, contact, social } = config;
-
-const email = contact.email || profile.email;
-const phone = contact.phone || profile.phone;
-const location = contact.location || profile.location;
+const { profile, social } = config;
 ---
 
 <header class="print-header" aria-hidden="true">
@@ -18,10 +14,10 @@ const location = contact.location || profile.location;
   {profile.headline && <p class="print-headline">{profile.headline}</p>}
 
   <div class="print-contact">
-    {email && <span>{email}</span>}
-    {phone && <span>{phone}</span>}
-    {location && <span>{location}</span>}
-    {profile.website && <span>{profile.website}</span>}
+    {profile.email && <span>{profile.email}</span>}
+    {profile.phone && <span>{profile.phone}</span>}
+    {profile.location && <span>{profile.location}</span>}
+    {config.site.url && <span>{config.site.url}</span>}
   </div>
 
   {

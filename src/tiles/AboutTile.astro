@@ -1,10 +1,12 @@
 ---
 import { loadConfig } from '@/lib/config';
+import type { SocialLink } from '@/types/config';
 
 interface Props {}
 
 const config = loadConfig();
-const { about, profile } = config;
+const { about, profile, social } = config;
+const email = profile.email || '';
 const systemInfo = about.systemInfo;
 const systemInfoEntries = Object.entries(systemInfo);
 
@@ -99,6 +101,37 @@ const username =
           <div class="fun-fact" data-typeable>
             <span class="bullet"> * </span>
             {fact}
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {/* Contact & links */}
+  {
+    (email || social.length > 0) && (
+      <div class="contact-section mt-4">
+        {email && (
+          <div>
+            <span class="info-key">Email</span>
+            <span class="info-sep">: </span>
+            <a href={`mailto:${email}`} class="contact-link">
+              {email}
+            </a>
+          </div>
+        )}
+        {social.map((link: SocialLink) => (
+          <div>
+            <span class="info-key">{link.network}</span>
+            <span class="info-sep">: </span>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-link"
+            >
+              {link.username || link.url}
+            </a>
           </div>
         ))}
       </div>
@@ -245,5 +278,23 @@ const username =
 
   .bullet {
     color: var(--hp-green);
+  }
+
+  .contact-section {
+    border-top: 1px solid var(--hp-surface-1);
+    padding-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-link {
+    color: var(--hp-blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .contact-link:hover {
+    color: var(--hp-accent);
   }
 </style>
