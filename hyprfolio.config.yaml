@@ -287,16 +287,17 @@ skills:
         tier: familiar
 
 # ─── Projects ────────────────────────────────────────────────────────────────
-# Fetches pinned repos from GitHub automatically.
+# Set projects.github.username to fetch all non-fork public repos automatically.
+# Pinned repos appear first, then the rest sorted by the chosen strategy.
 # Requires the GITHUB_TOKEN environment variable (PAT with public_repo + read:user).
 # Manual items below are used as a fallback if GitHub is unavailable.
 
 projects:
   github:
     username: christian-deleon
-    sortBy: stars          # stars | updated | created | name
-    maxRepos: 10           # total repos shown (pinned + rest)
-    topics:                # optional — only show non-pinned repos matching these GitHub topics
+    sortBy: stars # stars | updated | created | name
+    maxRepos: 10 # total repos shown (pinned + rest)
+    topics: # optional — only show non-pinned repos matching these GitHub topics
       - devops
   items:
     - name: 'devops-stack'

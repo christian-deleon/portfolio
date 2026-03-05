@@ -1,28 +1,44 @@
-import type { ProjectItem } from '@/types/config';
+import type { ProjectItem, ProjectSortBy } from '@/types/config';
 
 const GITHUB_GRAPHQL_ENDPOINT = 'https://api.github.com/graphql';
 const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour
 
-let cache: { data: ProjectItem[]; timestamp: number } | null = null;
+// ─── GraphQL Query ──────────────────────────────────────────────────────────
+// Fetches both pinned items (to know which repos are pinned) and all non-fork
+// public repos owned by the user, ordered by stars descending (up to 100).
 
-const PINNED_REPOS_QUERY = `
+const REPOS_QUERY = `
   query($username: String!) {
     user(login: $username) {
       pinnedItems(first: 6, types: REPOSITORY) {
         nodes {
           ... on Repository {
             name
-            description
-            url
-            homepageUrl
-            primaryLanguage {
-              name
-            }
-            repositoryTopics(first: 10) {
-              nodes {
-                topic {
-                  name
-                }
+          }
+        }
+      }
+      repositories(
+        first: 100
+        isFork: false
+        ownerAffiliations: OWNER
+        privacy: PUBLIC
+        orderBy: { field: STARGAZERS, direction: DESC }
+      ) {
+        nodes {
+          name
+          description
+          url
+          homepageUrl
+          stargazerCount
+          updatedAt
+          createdAt
+          primaryLanguage {
+            name
+          }
+          repositoryTopics(first: 10) {
+            nodes {
+              topic {
+                name
               }
             }
           }
@@ -32,40 +48,117 @@ const PINNED_REPOS_QUERY = `
   }
 `;
 
-interface GitHubPinnedRepo {
+// ─── Types ──────────────────────────────────────────────────────────────────
+
+interface GitHubRepo {
   name: string;
   description: string | null;
   url: string;
   homepageUrl: string | null;
+  stargazerCount: number;
+  updatedAt: string;
+  createdAt: string;
   primaryLanguage: { name: string } | null;
   repositoryTopics: {
     nodes: Array<{ topic: { name: string } }>;
   };
 }
 
+interface GitHubPinnedItem {
+  name: string;
+}
+
 interface GitHubGraphQLResponse {
   data?: {
     user?: {
       pinnedItems?: {
-        nodes: GitHubPinnedRepo[];
+        nodes: GitHubPinnedItem[];
+      };
+      repositories?: {
+        nodes: GitHubRepo[];
       };
     };
   };
   errors?: Array<{ message: string }>;
 }
 
-export async function fetchPinnedRepos(
+interface CachedData {
+  pinnedNames: Set<string>;
+  repos: GitHubRepo[];
+  timestamp: number;
+}
+
+let cache: CachedData | null = null;
+
+// ─── Public API ─────────────────────────────────────────────────────────────
+
+/**
+ * Fetch all non-fork public repos for a GitHub user. Pinned repos are placed
+ * first (marked `pinned: true` / `featured: true`), followed by the remaining
+ * repos sorted by the chosen strategy. The total count is capped at `maxRepos`.
+ *
+ * When `topics` is provided, non-pinned repos are filtered to only those that
+ * have at least one matching topic. Pinned repos always appear regardless.
+ */
+export async function fetchGitHubRepos(
   username: string,
+  sortBy: ProjectSortBy = 'stars',
+  maxRepos: number = 20,
+  topics?: string[],
 ): Promise<ProjectItem[]> {
+  let pinnedNames: Set<string>;
+  let repos: GitHubRepo[];
+
   if (cache && Date.now() - cache.timestamp < CACHE_TTL_MS) {
-    return cache.data;
+    pinnedNames = cache.pinnedNames;
+    repos = cache.repos;
+  } else {
+    const result = await fetchFromAPI(username);
+    pinnedNames = result.pinnedNames;
+    repos = result.repos;
+    cache = { pinnedNames, repos, timestamp: Date.now() };
   }
 
+  // Build a lowercase topic set for case-insensitive matching
+  const topicFilter =
+    topics && topics.length > 0
+      ? new Set(topics.map((t) => t.toLowerCase()))
+      : null;
+
+  // Split into pinned and non-pinned
+  const pinned: ProjectItem[] = [];
+  const others: ProjectItem[] = [];
+
+  for (const repo of repos) {
+    if (pinnedNames.has(repo.name)) {
+      // Pinned repos always included regardless of topic filter
+      pinned.push(repoToProjectItem(repo, true));
+    } else {
+      // Apply topic filter to non-pinned repos
+      if (topicFilter && !repoMatchesTopics(repo, topicFilter)) {
+        continue;
+      }
+      others.push(repoToProjectItem(repo, false));
+    }
+  }
+
+  // Sort non-pinned repos by the configured strategy
+  const sortedOthers = sortProjects(others, sortBy);
+
+  // Pinned first, then sorted rest, capped at maxRepos
+  return [...pinned, ...sortedOthers].slice(0, maxRepos);
+}
+
+// ─── Internals ──────────────────────────────────────────────────────────────
+
+async function fetchFromAPI(
+  username: string,
+): Promise<{ pinnedNames: Set<string>; repos: GitHubRepo[] }> {
   const token = import.meta.env.GITHUB_TOKEN;
 
   if (!token) {
     throw new Error(
-      'GITHUB_TOKEN environment variable is required to fetch pinned repositories',
+      'GITHUB_TOKEN environment variable is required to fetch GitHub repositories',
     );
   }
 
@@ -76,7 +169,7 @@ export async function fetchPinnedRepos(
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      query: PINNED_REPOS_QUERY,
+      query: REPOS_QUERY,
       variables: { username },
     }),
   });
@@ -95,20 +188,22 @@ export async function fetchPinnedRepos(
     );
   }
 
-  const repos = json.data?.user?.pinnedItems?.nodes;
+  const user = json.data?.user;
 
-  if (!repos) {
-    throw new Error(
-      `GitHub user "${username}" not found or has no pinned items`,
-    );
+  if (!user) {
+    throw new Error(`GitHub user "${username}" not found`);
   }
 
-  const data = repos.map(repoToProjectItem);
-  cache = { data, timestamp: Date.now() };
-  return data;
+  const pinnedNames = new Set(
+    (user.pinnedItems?.nodes ?? []).map((item) => item.name),
+  );
+
+  const repos = user.repositories?.nodes ?? [];
+
+  return { pinnedNames, repos };
 }
 
-function repoToProjectItem(repo: GitHubPinnedRepo): ProjectItem {
+function repoToProjectItem(repo: GitHubRepo, isPinned: boolean): ProjectItem {
   const technologies: string[] = [];
 
   if (repo.primaryLanguage?.name) {
@@ -127,6 +222,45 @@ function repoToProjectItem(repo: GitHubPinnedRepo): ProjectItem {
     url: repo.homepageUrl || repo.url,
     technologies,
     highlights: [],
-    featured: true,
+    featured: isPinned,
+    stars: repo.stargazerCount,
+    updatedAt: repo.updatedAt,
+    createdAt: repo.createdAt,
+    pinned: isPinned,
   };
+}
+
+function repoMatchesTopics(
+  repo: GitHubRepo,
+  topicFilter: Set<string>,
+): boolean {
+  return repo.repositoryTopics.nodes.some(({ topic }) =>
+    topicFilter.has(topic.name.toLowerCase()),
+  );
+}
+
+function sortProjects(
+  projects: ProjectItem[],
+  sortBy: ProjectSortBy,
+): ProjectItem[] {
+  return [...projects].sort((a, b) => {
+    switch (sortBy) {
+      case 'stars':
+        return b.stars - a.stars;
+      case 'updated':
+        return (
+          new Date(b.updatedAt ?? 0).getTime() -
+          new Date(a.updatedAt ?? 0).getTime()
+        );
+      case 'created':
+        return (
+          new Date(b.createdAt ?? 0).getTime() -
+          new Date(a.createdAt ?? 0).getTime()
+        );
+      case 'name':
+        return a.name.localeCompare(b.name);
+      default:
+        return 0;
+    }
+  });
 }

@@ -21,6 +21,7 @@ import type {
   SkillCategorySchema,
   SkillItemSchema,
   ProjectItemSchema,
+  ProjectSortByEnum,
   ProjectsGithubSchema,
   ProjectsSchema,
   CertificationItemSchema,
@@ -75,6 +76,7 @@ export type EducationItem = z.infer<typeof EducationItemSchema>;
 export type SkillCategory = z.infer<typeof SkillCategorySchema>;
 export type SkillItem = z.infer<typeof SkillItemSchema>;
 export type ProjectItem = z.infer<typeof ProjectItemSchema>;
+export type ProjectSortBy = z.infer<typeof ProjectSortByEnum>;
 export type ProjectsGithub = z.infer<typeof ProjectsGithubSchema>;
 export type Projects = z.infer<typeof ProjectsSchema>;
 export type CertificationItem = z.infer<typeof CertificationItemSchema>;

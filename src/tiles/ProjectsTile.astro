@@ -1,6 +1,6 @@
 ---
 import { loadConfig } from '@/lib/config';
-import { fetchPinnedRepos } from '@/lib/github';
+import { fetchGitHubRepos } from '@/lib/github';
 import type { ProjectItem } from '@/types/config';
 
 interface Props {}
@@ -12,10 +12,15 @@ let projects: ProjectItem[] = items;
 
 if (github) {
   try {
-    projects = await fetchPinnedRepos(github.username);
+    projects = await fetchGitHubRepos(
+      github.username,
+      github.sortBy,
+      github.maxRepos,
+      github.topics,
+    );
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.warn(`Failed to fetch GitHub pinned repos: ${message}`);
+    console.warn(`Failed to fetch GitHub repos: ${message}`);
     console.warn('Falling back to manually configured projects.');
   }
 }
@@ -31,7 +36,7 @@ if (github) {
           <div class="project-card">
             <div class="project-title-row">
               <span class="folder-icon">
-                {project.featured ? '\u2605' : '\uD83D\uDCC1'}
+                {project.pinned || project.featured ? '\u2605' : '\uD83D\uDCC1'}
               </span>
               {project.url ? (
                 <a
@@ -45,13 +50,17 @@ if (github) {
               ) : (
                 <span class="project-name">{project.name}</span>
               )}
-              {project.featured && <span class="featured-badge">featured</span>}
+              {project.stars > 0 && (
+                <span class="stars-count">
+                  {'\u2B50'} {project.stars.toLocaleString()}
+                </span>
+              )}
             </div>
             {project.description && (
               <p class="project-desc">{project.description}</p>
             )}
             {project.technologies.length > 0 && (
-              <div class="flex flex-wrap gap-1 mt-2">
+              <div class="tech-pills">
                 {project.technologies.map((tech: string) => (
                   <span class="tech-pill">{tech}</span>
                 ))}
@@ -71,7 +80,7 @@ if (github) {
 
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
@@ -120,13 +129,17 @@ if (github) {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    min-width: 0;
   }
 
   .project-name {
     color: var(--hp-text);
     font-weight: 600;
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
   }
 
   .project-name-link {
@@ -137,15 +150,14 @@ if (github) {
     color: var(--hp-accent);
   }
 
-  .featured-badge {
-    display: inline-block;
-    padding: 0 5px;
-    border-radius: 4px;
-    font-size: 10px;
-    background: var(--hp-accent);
-    color: var(--hp-crust);
-    font-weight: 600;
-    line-height: 1.6;
+  .stars-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 11px;
+    color: var(--hp-yellow);
+    font-weight: 500;
+    flex-shrink: 0;
   }
 
   .project-desc {
@@ -153,6 +165,13 @@ if (github) {
     font-size: 12px;
     margin-top: 4px;
     line-height: 1.4;
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
   }
 
   .tech-pill {
