@@ -252,13 +252,20 @@ skills:
         tier: proficient
 
 # ─── Projects ────────────────────────────────────────────────────────────────
-# Set projects.github.username to fetch pinned repos from GitHub automatically.
+# Set projects.github.username to fetch all non-fork public repos automatically.
+# Pinned repos appear first, then the rest sorted by the chosen strategy.
 # Requires the GITHUB_TOKEN environment variable (PAT with public_repo + read:user).
 # Manual items below are used as a fallback if GitHub is disabled or unavailable.
 
 projects:
   # github:
   #   username: mr-robot-00
+  #   sortBy: stars          # stars | updated | created | name
+  #   maxRepos: 20           # total repos shown (pinned + rest)
+  #   topics:                # optional — only show non-pinned repos matching these GitHub topics
+  #     - security
+  #     - pentesting
+  #     - cryptography
   items:
     - name: 'fsociety-tools'
       description: 'Collection of custom penetration testing and network reconnaissance utilities.'

@@ -512,33 +512,81 @@ skills:
 
 ### projects
 
-Array of projects. Rendered as Thunar-style file manager with folder grid and sidebar.
+Projects with optional GitHub integration. When `github` is configured, all non-fork public repos are fetched automatically at build time -- pinned repos appear first, then the rest sorted by your chosen strategy. Manual `items` serve as a fallback when the GitHub fetch is disabled or fails. Rendered as a Thunar-style file manager grid.
 
-| Field          | Type                | Required | Default | Description                      |
-| -------------- | ------------------- | -------- | ------- | -------------------------------- |
-| `name`         | `string`            | **Yes**  | --      | Project name.                    |
-| `description`  | `string`            | No       | `""`    | Short project description.       |
-| `url`          | `string` (URL)      | No       | --      | Project URL.                     |
-| `image`        | `string`            | No       | --      | Project screenshot or logo path. |
-| `technologies` | `string[]`          | No       | `[]`    | Technologies used.               |
-| `highlights`   | `string[]`          | No       | `[]`    | Key features or achievements.    |
-| `startDate`    | `string` (ISO date) | No       | --      | Project start date.              |
-| `endDate`      | `string` (ISO date) | No       | --      | Project end date.                |
-| `featured`     | `boolean`           | No       | `false` | Mark as a featured project.      |
+#### Top-level
+
+| Field    | Type             | Required | Default | Description                                                         |
+| -------- | ---------------- | -------- | ------- | ------------------------------------------------------------------- |
+| `github` | `ProjectsGithub` | No       | --      | GitHub integration settings. Omit to use manual items only.         |
+| `items`  | `ProjectItem[]`  | No       | `[]`    | Manually defined projects. Used as fallback when GitHub is not set. |
+
+#### projects.github
+
+| Field      | Type            | Required | Default   | Description                                                                                                                             |
+| ---------- | --------------- | -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `username` | `string`        | **Yes**  | --        | GitHub username. All non-fork public repos owned by this user are fetched.                                                              |
+| `sortBy`   | `ProjectSortBy` | No       | `"stars"` | Sort strategy for non-pinned repos: `stars`, `updated`, `created`, or `name`.                                                           |
+| `maxRepos` | `integer` (>=1) | No       | `20`      | Maximum total repos displayed (pinned + rest). Pinned repos always count toward this limit.                                             |
+| `topics`   | `string[]`      | No       | --        | Filter non-pinned repos to only those with at least one matching GitHub topic. Case-insensitive. Pinned repos always appear regardless. |
+
+Requires the `GITHUB_TOKEN` environment variable (a GitHub PAT with `public_repo` + `read:user` scopes).
+
+**Sort strategies:**
+
+| Value     | Description                           |
+| --------- | ------------------------------------- |
+| `stars`   | Most stargazers first (default).      |
+| `updated` | Most recently pushed / updated first. |
+| `created` | Most recently created first.          |
+| `name`    | Alphabetical A-Z.                     |
+
+#### projects.items[] (ProjectItem)
+
+| Field          | Type                | Required | Default | Description                                            |
+| -------------- | ------------------- | -------- | ------- | ------------------------------------------------------ |
+| `name`         | `string`            | **Yes**  | --      | Project name.                                          |
+| `description`  | `string`            | No       | `""`    | Short project description.                             |
+| `url`          | `string` (URL)      | No       | --      | Project URL.                                           |
+| `image`        | `string`            | No       | --      | Project screenshot or logo path.                       |
+| `technologies` | `string[]`          | No       | `[]`    | Technologies used.                                     |
+| `highlights`   | `string[]`          | No       | `[]`    | Key features or achievements.                          |
+| `startDate`    | `string` (ISO date) | No       | --      | Project start date.                                    |
+| `endDate`      | `string` (ISO date) | No       | --      | Project end date.                                      |
+| `featured`     | `boolean`           | No       | `false` | Mark as a featured project.                            |
+| `stars`        | `integer`           | No       | `0`     | Star count (auto-populated from GitHub).               |
+| `updatedAt`    | `string`            | No       | --      | Last update timestamp (auto-populated from GitHub).    |
+| `createdAt`    | `string`            | No       | --      | Creation timestamp (auto-populated from GitHub).       |
+| `pinned`       | `boolean`           | No       | `false` | Whether the repo is pinned on GitHub (auto-populated). |
 
 ```yaml
+# GitHub integration -- fetches all non-fork repos, pinned first
 projects:
-  - name: 'fsociety-tools'
-    description: 'Collection of custom penetration testing and network reconnaissance utilities.'
-    url: 'https://github.com/mr-robot-00/fsociety-tools'
-    technologies:
-      - Python
-      - C
-      - Shell
-    highlights:
-      - 'Custom exploit frameworks'
-      - 'Network enumeration automation'
-    featured: true
+  github:
+    username: christian-deleon
+    sortBy: stars # stars | updated | created | name
+    maxRepos: 20 # pinned repos + sorted rest, capped here
+  # Manual fallback items (used when github is omitted or fetch fails)
+  items:
+    - name: 'my-project'
+      description: 'A cool project I built.'
+      url: 'https://github.com/user/my-project'
+      technologies: [TypeScript, Astro]
+      featured: true
+```
+
+```yaml
+# Manual only -- no GitHub integration
+projects:
+  items:
+    - name: 'fsociety-tools'
+      description: 'Custom penetration testing utilities.'
+      url: 'https://github.com/mr-robot-00/fsociety-tools'
+      technologies: [Python, C, Shell]
+      highlights:
+        - 'Custom exploit frameworks'
+        - 'Network enumeration automation'
+      featured: true
 ```
 
 ---

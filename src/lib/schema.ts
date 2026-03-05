@@ -229,6 +229,13 @@ export const SkillCategorySchema = z.object({
 
 // ─── Projects ───────────────────────────────────────────────────────────────
 
+export const ProjectSortByEnum = z.enum([
+  'stars',
+  'updated',
+  'created',
+  'name',
+]);
+
 export const ProjectItemSchema = z.object({
   name: z.string(),
   description: z.string().default(''),
@@ -239,12 +246,19 @@ export const ProjectItemSchema = z.object({
   startDate: isoDateString.optional(),
   endDate: isoDateString.optional(),
   featured: z.boolean().default(false),
+  stars: z.number().int().default(0),
+  updatedAt: z.string().optional(),
+  createdAt: z.string().optional(),
+  pinned: z.boolean().default(false),
 });
 
 export const ProjectsGithubSchema = z.object({
   username: z
     .string()
     .min(1, 'GitHub username is required when github is configured'),
+  sortBy: ProjectSortByEnum.default('stars'),
+  maxRepos: z.number().int().min(1).default(20),
+  topics: z.array(z.string()).optional(),
 });
 
 export const ProjectsSchema = z.object({
