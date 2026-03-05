@@ -110,27 +110,27 @@ tiles:
     rowSpan: 2
     title: 'Skills Monitor'
 
-  - content: experience
-    windowType: terminal
-    colSpan: 6
-    rowSpan: 2
-    terminalTitle: 'git log — kitty'
-
   - content: projects
     windowType: file-manager
-    colSpan: 6
+    colSpan: 5
     rowSpan: 1
     title: 'Projects'
 
+  - content: experience
+    windowType: terminal
+    colSpan: 7
+    rowSpan: 3
+    terminalTitle: 'git log — kitty'
+
   - content: certifications
     windowType: terminal
-    colSpan: 6
+    colSpan: 5
     rowSpan: 1
     terminalTitle: 'certifications — kitty'
 
   - content: education
     windowType: terminal
-    colSpan: 6
+    colSpan: 5
     rowSpan: 1
     terminalTitle: 'man education — kitty'
 
