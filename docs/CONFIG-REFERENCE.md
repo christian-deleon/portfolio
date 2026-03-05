@@ -10,8 +10,7 @@ Complete field-by-field reference for `hyprfolio.config.yaml`. The Zod schema in
   - [profile](#profile)
   - [tiles](#tiles)
 - [Identity](#identity)
-  - [contact](#contact)
-  - [social](#social)
+  - [links](#links)
   - [about](#about)
 - [Visual Settings](#visual-settings)
   - [palette](#palette)
@@ -94,28 +93,24 @@ site:
 
 Primary identity information. Name is required; everything else is optional.
 
-| Field      | Type           | Required | Default | Description                                          |
-| ---------- | -------------- | -------- | ------- | ---------------------------------------------------- |
-| `name`     | `string`       | **Yes**  | --      | Full name. Must be non-empty.                        |
-| `username` | `string`       | No       | --      | Username (used in waybar title, terminal prompts).   |
-| `headline` | `string`       | No       | `""`    | Professional title or tagline.                       |
-| `summary`  | `string`       | No       | `""`    | Brief professional summary.                          |
-| `photo`    | `string`       | No       | --      | Path to profile photo (e.g., `/images/profile.jpg`). |
-| `location` | `string`       | No       | --      | City, state, or region.                              |
-| `phone`    | `string`       | No       | --      | Phone number.                                        |
-| `email`    | `string`       | No       | --      | Email address.                                       |
-| `website`  | `string` (URL) | No       | --      | Personal website URL.                                |
+| Field      | Type     | Required | Default | Description                                          |
+| ---------- | -------- | -------- | ------- | ---------------------------------------------------- |
+| `name`     | `string` | **Yes**  | --      | Full name. Must be non-empty.                        |
+| `username` | `string` | No       | --      | Username (used in waybar title, terminal prompts).   |
+| `headline` | `string` | No       | `""`    | Professional title or tagline.                       |
+| `photo`    | `string` | No       | --      | Path to profile photo (e.g., `/images/profile.jpg`). |
+| `location` | `string` | No       | --      | City, state, or region.                              |
+| `phone`    | `string` | No       | --      | Phone number.                                        |
+| `email`    | `string` | No       | --      | Email address.                                       |
 
 ```yaml
 profile:
   name: 'Elliot Alderson'
   username: 'elliot'
   headline: 'Cybersecurity Engineer'
-  summary: 'I find the vulnerabilities before someone else does.'
   photo: '/images/profile.jpg'
   location: 'New York, NY'
   email: 'elliot@protonmail.ch'
-  website: 'https://example.com'
 ```
 
 ---
@@ -126,7 +121,7 @@ Array of tile definitions that control the desktop layout. **At least one tile i
 
 | Field            | Type              | Required | Default      | Description                                                                                                                                 |
 | ---------------- | ----------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `content`        | `TileContentEnum` | **Yes**  | --           | Content type: `about`, `experience`, `education`, `skills`, `projects`, `certifications`, `contact`, `custom`.                              |
+| `content`        | `TileContentEnum` | **Yes**  | --           | Content type: `about`, `experience`, `education`, `skills`, `projects`, `certifications`, `custom`.                                         |
 | `windowType`     | `WindowTypeEnum`  | No       | `"terminal"` | Window chrome: `terminal`, `browser`, `editor`, `file-manager`, `system-monitor`, `pdf-viewer`, `image-viewer`, `markdown-viewer`, `blank`. |
 | `colSpan`        | `integer` (1-12)  | No       | `6`          | Number of grid columns this tile spans.                                                                                                     |
 | `rowSpan`        | `integer` (1-6)   | No       | `1`          | Number of grid rows this tile spans.                                                                                                        |
@@ -163,12 +158,6 @@ tiles:
     colSpan: 6
     rowSpan: 2
     title: 'Projects — Thunar'
-
-  - content: contact
-    windowType: terminal
-    colSpan: 4
-    rowSpan: 1
-    terminalTitle: 'aerc — kitty'
 ```
 
 The 12-column grid is responsive:
@@ -186,45 +175,24 @@ Column spans clamp to the available columns at smaller breakpoints.
 
 ## Identity
 
-### contact
+### links
 
-Contact details shown in the contact tile (aerc-style email compose).
+Array of links shown in the about tile and used in JSON-LD. Can be social profiles, blogs, portfolios, or any URL.
 
-| Field              | Type     | Required | Default | Description                                                  |
-| ------------------ | -------- | -------- | ------- | ------------------------------------------------------------ |
-| `email`            | `string` | No       | --      | Contact email address.                                       |
-| `phone`            | `string` | No       | --      | Contact phone number.                                        |
-| `location`         | `string` | No       | --      | City, state, or region.                                      |
-| `availability`     | `string` | No       | --      | Current availability status (e.g., "Open to opportunities"). |
-| `preferredContact` | `string` | No       | --      | Preferred contact method (e.g., "email").                    |
-| `message`          | `string` | No       | --      | Short message or call to action.                             |
+| Field  | Type           | Required | Default | Description                                                  |
+| ------ | -------------- | -------- | ------- | ------------------------------------------------------------ |
+| `name` | `string`       | **Yes**  | --      | Display label (e.g., "GitHub", "Blog", "Portfolio").         |
+| `url`  | `string` (URL) | **Yes**  | --      | Link URL. Must be a valid URL.                               |
+| `text` | `string`       | No       | --      | Display text (e.g., username). Falls back to URL if omitted. |
 
 ```yaml
-contact:
-  email: 'elliot@protonmail.ch'
-  location: 'New York, NY'
-  availability: 'Selective engagements only'
-  preferredContact: 'email'
-  message: 'Hello, friend.'
-```
-
----
-
-### social
-
-Array of social media links. Shown in the about tile and used in JSON-LD.
-
-| Field      | Type           | Required | Default | Description                                |
-| ---------- | -------------- | -------- | ------- | ------------------------------------------ |
-| `network`  | `string`       | **Yes**  | --      | Network name (e.g., "GitHub", "LinkedIn"). |
-| `url`      | `string` (URL) | **Yes**  | --      | Profile URL. Must be a valid URL.          |
-| `username` | `string`       | No       | --      | Username or handle on the network.         |
-
-```yaml
-social:
-  - network: GitHub
+links:
+  - name: GitHub
     url: 'https://github.com/mr-robot-00'
-    username: mr-robot-00
+    text: mr-robot-00
+  - name: Blog
+    url: 'https://myblog.dev'
+    text: myblog.dev
 ```
 
 ---

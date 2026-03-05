@@ -56,15 +56,15 @@ Create `src/windows/MyWindow.astro` with:
 - A `<slot />` where tile content will render
 - Scoped `<style>` using only `--hp-*` variables for colors
 
-### 2. Register in the resolver
+### 2. Register the window type
 
-Add your window to the map in `src/lib/windows.ts`:
+Add a static import and render case in `src/components/Tile.astro`:
 
-```typescript
-'my-window': MyWindow,
+```astro
+import MyWindow from '@/windows/MyWindow.astro';
 ```
 
-Also add `'my-window'` to `WindowTypeEnum` in `src/lib/schema.ts`.
+Then add a render block alongside the existing window types. Also add `'my-window'` to `WindowTypeEnum` in `src/lib/schema.ts`.
 
 ### 3. Use in config
 
@@ -89,15 +89,15 @@ Create `src/tiles/MyTile.astro` that:
 - Renders formatted HTML
 - Uses scoped `<style>` with only `--hp-*` variables for colors
 
-### 2. Register in the resolver
+### 2. Register the tile type
 
-Add your tile to the map in `src/lib/tiles.ts`:
+Add a static import and render case in `src/components/TileContent.astro`:
 
-```typescript
-'my-tile': MyTile,
+```astro
+import MyTile from '@/tiles/MyTile.astro';
 ```
 
-Also add `'my-tile'` to `TileContentEnum` in `src/lib/schema.ts`.
+Then add `{content === 'my-tile' && <MyTile />}` alongside the existing tiles. Also add `'my-tile'` to `TileContentEnum` in `src/lib/schema.ts`.
 
 ### 3. Use in config
 

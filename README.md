@@ -65,7 +65,6 @@ site:
 profile:
   name: 'Elliot Alderson'
   headline: 'Cybersecurity Engineer'
-  summary: 'I find the vulnerabilities before someone else does.'
   photo: '/images/profile.jpg'
 
 tiles:
@@ -99,7 +98,7 @@ All content and settings live in `hyprfolio.config.yaml`. The config is validate
 | Section                                                                                   | Purpose                                 |
 | ----------------------------------------------------------------------------------------- | --------------------------------------- |
 | `site`, `seo`, `analytics`                                                                | Metadata, SEO tags, analytics           |
-| `profile`, `contact`, `social`, `about`                                                   | Identity and bio                        |
+| `profile`, `links`, `about`                                                               | Identity and bio                        |
 | `palette`, `wallpaper`, `waybar`, `layout`, `animations`                                  | Visual settings                         |
 | `tiles`                                                                                   | Tile arrangement (order = render order) |
 | `experience`, `education`, `skills`, `projects`, `certifications`                         | Core CV sections                        |
@@ -137,7 +136,6 @@ Each content type mimics a specific Linux application for visual authenticity:
 | `skills`         | btop                  | Category groups with progress bars and percentages |
 | `projects`       | Thunar (file manager) | Folder grid with sidebar navigation                |
 | `certifications` | pass                  | Tree hierarchy of credentials                      |
-| `contact`        | aerc                  | Email compose view with contact fields             |
 | `custom`         | (varies)              | User-defined content in any window type            |
 
 ---

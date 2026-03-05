@@ -99,14 +99,24 @@ Fill in the `--hp-*` custom properties. The palette is auto-discovered at build 
 ### Adding a new tile type
 
 1. Create `src/tiles/<Name>Tile.astro`
-2. Register it in `src/lib/tiles.ts`
+2. Add a static import and render case in `src/components/TileContent.astro`
 3. Add schema validation in `src/lib/schema.ts`
 4. Add content in `hyprfolio.config.yaml`
 
 ### Adding a new window type
 
 1. Create `src/windows/<Name>.astro`
-2. Register it in `src/lib/windows.ts`
+2. Add a static import and render case in `src/components/Tile.astro`
+3. Add the window type to `WindowTypeEnum` in `src/lib/schema.ts`
+
+### Documentation
+
+When changing schemas, config fields, tile types, window types, or component APIs, update the corresponding documentation:
+
+- `README.md` — config examples, tile/window type tables, config sections table
+- `docs/CONFIG-REFERENCE.md` — field-by-field reference for all config sections
+- `docs/CUSTOMIZATION.md` — instructions for adding tiles, windows, and palettes
+- `AGENTS.md` — architecture overview, common patterns, code conventions
 
 ## Do Not
 
@@ -117,6 +127,7 @@ Fill in the `--hp-*` custom properties. The palette is auto-discovered at build 
 - Use `@astrojs/tailwind` — use `@tailwindcss/vite` plugin instead
 - Exceed the 185KB file size budget (excluding wallpaper)
 - Mix unrelated changes in a single commit
+- Leave docs out of date — update README.md and docs/ when schemas or APIs change
 
 ## Skills
 
